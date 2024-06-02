@@ -6,7 +6,7 @@ const MenuBar = () => {
     return (
         <Navbar fluid className="max-w-[1440px] mx-auto">
             <NavbarBrand>
-                <img src={logo} className="mr-3 h-6 sm:h-9" />
+                <NavLink to={'/'}><img src={logo} className="mr-3 h-6 sm:h-9" /></NavLink>
             </NavbarBrand>
             <div className="flex md:order-2">
                 <Dropdown arrowIcon={false} inline label={<Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />}>

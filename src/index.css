@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+.navbar{
+    border-bottom: 1px solid whitesmoke;
+}
 
 /* home page */
 .hero{
@@ -28,4 +31,46 @@
     padding: 10px 20px;
     font-weight: 500;
     border-radius: 5px;
+}
+
+
+
+/* register page  */
+.register {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.form-box {
+    background-color: rgb(255, 250, 250);
+}
+
+.form-box label{
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-box input{
+    width: 100%;
+    height: 47px;
+    outline: none;
+    border-radius: 5px;
+}
+
+.social button{
+    border: 1px solid black;
+    padding: 8px 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 500;
+    width: 100%;
+}
+
+.box-shadow{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    overflow: hidden;
 }
