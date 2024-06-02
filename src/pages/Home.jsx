@@ -1,8 +1,12 @@
+import Hero from "../components/Hero";
+
+
 
 const Home = () => {
     return (
         <div>
-            this is home page
+           <Hero></Hero>
+           <div className="h-screen"></div>
         </div>
     );
 };

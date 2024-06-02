@@ -4,7 +4,7 @@ import logo from '../assets/logo.png'
 
 const MenuBar = () => {
     return (
-        <Navbar fluid className="bg-red-100">
+        <Navbar fluid className="max-w-[1440px] mx-auto">
             <NavbarBrand>
                 <img src={logo} className="mr-3 h-6 sm:h-9" />
             </NavbarBrand>
