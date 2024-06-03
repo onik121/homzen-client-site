@@ -16,6 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import PrivateRoute from './privateroute/PrivateRoute';
 import { QueryClient, QueryClientProvider, } from '@tanstack/react-query'
 import Properties from './pages/Properties';
+import Details from './components/Details';
 
 // Create a client
 const queryClient = new QueryClient()
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: '/allproperties',
         element: <PrivateRoute><Properties></Properties></PrivateRoute>
+      },
+      {
+        path: '/details/:id',
+        element: <PrivateRoute><Details></Details></PrivateRoute>
       },
       {
         path: '/register',

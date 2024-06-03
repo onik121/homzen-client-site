@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import useAuth from '../hooks/useAuth';
+import useAxiosPublic from '../hooks/useAxiosPublic';
 
 
 const Register = () => {
@@ -14,6 +15,7 @@ const Register = () => {
     const { createUsers, user, setUser, updateUserProfile } = useAuth();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
 
     const onSubmit = async (data) => {
         try {
@@ -22,16 +24,17 @@ const Register = () => {
             await updateUserProfile(data.name, data.photo);
             setUser({ ...user, photoURL: data.photo, displayName: data.name, });
             // create user entry into the database
-            // const userInfo = {
-            //     name: data.name,
-            //     email: data.email,
-            // };
-            // try {
-            //     await axiosPublic.post('/users', userInfo);
-            // }
-            // catch (error) {
-            //     console.error('Error creating user in the database:', error);
-            // }
+            const userInfo = {
+                name: data.name,
+                email: data.email,
+            };
+            try {
+                const { data } = await axiosPublic.post('/users', userInfo);
+                console.log(data)
+            }
+            catch (error) {
+                console.error('Error creating user in the database:', error);
+            }
             reset();
             navigate('/');
         } catch (error) {

@@ -6,7 +6,6 @@ const Advertisement = () => {
 
 
     const [properties] = useProperties();
-    console.log(properties)
 
     return (
         <div className="Property-cart-container">

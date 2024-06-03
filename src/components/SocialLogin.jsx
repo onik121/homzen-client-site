@@ -23,16 +23,16 @@ const SocialLogin = () => {
                     theme: "light",
                 });
                 navigate(from, { replace: true });
-                // const userInfo = {
-                //     email: result.user?.email,
-                //     name: result.user.displayName,
-                // }
-                // try {
-                //     await axiosPublic.post('/users', userInfo);
-                // }
-                // catch (error) {
-                //     console.error('Error deleting:', error);
-                // }
+                const userInfo = {
+                    email: result.user?.email,
+                    name: result.user.displayName,
+                }
+                try {
+                    await axiosPublic.post('/users', userInfo);
+                }
+                catch (error) {
+                    console.error('Error deleting:', error);
+                }
             })
             .catch(error => {
                 toast.error(error)

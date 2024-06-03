@@ -40,7 +40,7 @@ const MenuBar = () => {
 
                 <NavbarToggle />
             </div>
-            <NavbarCollapse>
+            <NavbarCollapse className="menu-item">
                 <NavLink to={'/'}>Home</NavLink>
                 <NavLink to={'/allproperties'}>All Properties</NavLink>
             </NavbarCollapse>
