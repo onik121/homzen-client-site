@@ -13,6 +13,8 @@
     border-radius: 5px;
 }
 
+
+
 /* home page */
 .hero{
     background-image: url('./assets/slider-1.jpg');
@@ -39,6 +41,29 @@
     font-weight: 500;
     border-radius: 5px;
 }
+
+.react-tabs__tab-list {
+    border-bottom: none !important;
+}
+
+.react-tabs__tab--selected{
+    border: none !important;
+    background-color: #ed2027 !important;
+    color: white !important;
+    border-radius: 5px !important;
+}
+
+.react-tabs__tab {
+    background-color: whitesmoke;
+    margin: 0px 15px;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 8px 20px !important;
+}
+
+
+
 
 
 

@@ -7,28 +7,28 @@ const AuthProvider = ({ children }) => {
 
 
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
     const googleProvider = new GoogleAuthProvider();
     const facebookProvider = new FacebookAuthProvider();
     const axiosPublic = useAxiosPublic();
 
     const createUsers = (email, password) => {
-        setLoading(true)
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const loginUser = (email, password) => {
-        setLoading(true)
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     const googleSignIn = () => {
-        setLoading(true)
+        setLoading(true);
         return signInWithPopup(auth, googleProvider)
     }
 
     const facebookSignIn = () => {
-        setLoading(true)
+        setLoading(true);
         return signInWithPopup(auth, facebookProvider)
     }
 
@@ -46,9 +46,9 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
 
         const unSubscribe = onAuthStateChanged(auth, (currentuser) => {
-            setUser(currentuser)
+            setUser(currentuser);
             const userEmail = currentuser?.email || user?.email;
-            const loggedUser = { email: userEmail }
+            const loggedUser = { email: userEmail };
             // if user exisits then issue a token
             if (currentuser) {
                 axiosPublic.post('/jwt', loggedUser)
