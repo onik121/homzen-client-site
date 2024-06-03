@@ -5,6 +5,13 @@
 .navbar{
     border-bottom: 1px solid whitesmoke;
 }
+.sign-in {
+    background-color: #ed2027;
+    color: white;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
 
 /* home page */
 .hero{

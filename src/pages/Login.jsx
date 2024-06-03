@@ -1,7 +1,6 @@
 import img from '../assets/Login-cuate.png'
-import facebook from '../assets/facebook.png'
-import google from '../assets/search.png'
 import { Link } from 'react-router-dom';
+import SocialLogin from '../components/SocialLogin';
 
 const Login = () => {
     return (
@@ -26,10 +25,7 @@ const Login = () => {
                                 <div className='text-center my-4'>
                                     <p className='font-medium'>- Or Sign in With - </p>
                                 </div>
-                                <div className='social flex justify-between gap-5'>
-                                    <button><img src={google}></img> Google</button>
-                                    <button><img src={facebook}></img>Facebook</button>
-                                </div>
+                                <SocialLogin></SocialLogin>
                                 <div className='text-center my-4'>
                                     <p>Dont You Have an Account? <Link to={'/register'}><span className='font-medium'>Sign Up</span></Link></p>
                                 </div>
