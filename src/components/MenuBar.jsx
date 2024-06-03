@@ -42,7 +42,7 @@ const MenuBar = () => {
             </div>
             <NavbarCollapse>
                 <NavLink to={'/'}>Home</NavLink>
-                <NavLink>All Properties</NavLink>
+                <NavLink to={'/allproperties'}>All Properties</NavLink>
             </NavbarCollapse>
         </Navbar>
     );

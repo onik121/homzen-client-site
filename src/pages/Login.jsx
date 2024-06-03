@@ -1,5 +1,5 @@
 import img from '../assets/Login-cuate.png'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../components/SocialLogin';
 import { useForm } from 'react-hook-form';
 import useAuth from '../hooks/useAuth';
@@ -9,12 +9,16 @@ const Login = () => {
 
     const { loginUser } = useAuth();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const onSubmit = async (data) => {
         console.log(data)
         loginUser(data.email, data.password)
             .then(() => {
-                toast.success('Login Sucessfull')
+                toast.success('SignIn Sucessfull')
                 reset();
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.log(error)
