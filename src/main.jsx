@@ -11,10 +11,11 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import AuthProvider from './provider/AuthProvider';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PrivateRoute from './privateroute/PrivateRoute';
-import AllProperties from './pages/AllProperties';
 import { QueryClient, QueryClientProvider, } from '@tanstack/react-query'
+import Properties from './pages/Properties';
 
 // Create a client
 const queryClient = new QueryClient()
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/allproperties',
-        element: <PrivateRoute><AllProperties></AllProperties></PrivateRoute>
+        element: <PrivateRoute><Properties></Properties></PrivateRoute>
       },
       {
         path: '/register',
@@ -49,6 +50,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
+        <ToastContainer />
       </QueryClientProvider>
     </AuthProvider>
   </React.StrictMode>

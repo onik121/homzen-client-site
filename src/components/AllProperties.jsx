@@ -1,15 +1,14 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import useProperties from '../hooks/useProperties';
+import PropertyCard from './PropertyCard';
 
 const AllProperties = () => {
 
     const [properties] = useProperties();
-    // console.log(properties)
-
 
     return (
-        <div className='mt-10'>
+        <div className='mt-7'>
             <Tabs>
                 <div className='flex justify-center'>
                     <TabList>
@@ -22,31 +21,31 @@ const AllProperties = () => {
 
                 <div className='mt-5'>
                     <TabPanel>
-                        <div className='job-cart-container'>
-                            {/* {
-                                jobs.map(job => <JobCart key={job._id} job={job}></JobCart>)
-                            } */}
-                        </div>
-                    </TabPanel>
-                    <TabPanel>
-                        <div className='job-cart-container'>
+                        <div className='Property-cart-container'>
                             {
-                                properties.filter( item => item.apartment_type === 'house').map( item => console.log(item))
+                                properties.filter(item => item.verification_status === 'verified').map(item => <PropertyCard item={item}></PropertyCard>)
                             }
                         </div>
                     </TabPanel>
                     <TabPanel>
-                        <div className='job-cart-container'>
-                            {/* {
-                                jobs.filter(j => j.category === 'Remote Job').map(job => <JobCart key={job._id} job={job}></JobCart>)
-                            } */}
+                        <div className='Property-cart-container'>
+                            {
+                                properties.filter(item => item.apartment_type === 'house' && item.verification_status === 'verified').map(item => <PropertyCard item={item}></PropertyCard>)
+                            }
                         </div>
                     </TabPanel>
                     <TabPanel>
-                        <div className='job-cart-container'>
-                            {/* {
-                                jobs.filter(j => j.category === 'Part-Time').map(job => <JobCart key={job._id} job={job}></JobCart>)
-                            } */}
+                        <div className='Property-cart-container'>
+                            {
+                                properties.filter(item => item.apartment_type === 'villa' && item.verification_status === 'verified').map(item => <PropertyCard item={item}></PropertyCard>)
+                            }
+                        </div>
+                    </TabPanel>
+                    <TabPanel>
+                        <div className='Property-cart-container'>
+                            {
+                                properties.filter(item => item.apartment_type === 'office' && item.verification_status === 'verified').map(item => <PropertyCard item={item}></PropertyCard>)
+                            }
                         </div>
                     </TabPanel>
                 </div>
