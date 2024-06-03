@@ -12,7 +12,7 @@ const AuthProvider = ({ children }) => {
     const facebookProvider = new FacebookAuthProvider();
     const axiosPublic = useAxiosPublic();
 
-    const createUers = (email, password) => {
+    const createUsers = (email, password) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
@@ -73,7 +73,7 @@ const AuthProvider = ({ children }) => {
 
     }, [axiosPublic, user?.email])
 
-    const info = { user, loading, createUers, loginUser, logOut, updateUserProfile, setUser, googleSignIn, facebookSignIn };
+    const info = { user, loading, createUsers, loginUser, logOut, updateUserProfile, setUser, googleSignIn, facebookSignIn };
 
     return (
         <AuthContext.Provider value={info}>

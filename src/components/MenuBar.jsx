@@ -18,7 +18,7 @@ const MenuBar = () => {
                 });
             })
     }
-
+    
     return (
         <Navbar fluid className="max-w-[1440px] mx-auto">
             <NavbarBrand>

@@ -1,20 +1,48 @@
 
 import img from '../assets/Mobile login-pana.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from '../components/SocialLogin';
 import { useForm } from "react-hook-form"
+import { toast } from 'react-toastify';
+import { useContext } from 'react';
+import { AuthContext } from '../provider/AuthProvider';
+import useAuth from '../hooks/useAuth';
 
 
 const Register = () => {
 
-    const { register, handleSubmit, reset, formState: { errors }, } = useForm();
+    const { createUsers, user, setUser, updateUserProfile } = useAuth();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const navigate = useNavigate();
 
-    const onSubmit = (data) => {
-        console.log(data)
-    }
+    const onSubmit = async (data) => {
+        try {
+            await createUsers(data.email, data.password);
+            toast.success('Register Successful');
+            await updateUserProfile(data.name, data.photo);
+            setUser({ ...user, photoURL: data.photo, displayName: data.name, });
+            // create user entry into the database
+            // const userInfo = {
+            //     name: data.name,
+            //     email: data.email,
+            // };
+            // try {
+            //     await axiosPublic.post('/users', userInfo);
+            // }
+            // catch (error) {
+            //     console.error('Error creating user in the database:', error);
+            // }
+            reset();
+            navigate('/');
+        } catch (error) {
+            console.log(error);
+            toast.error('Registration failed');
+        }
+    };
+
 
     return (
-        <div className='h-screen max-w-[1440px] mx-auto px-4 flex items-center'>
+        <div className='min-h-screen max-w-[1440px] mx-auto px-4 flex items-center'>
             <div className='w-full box-shadow rounded-lg register h-auto'>
                 <div className='flex items-center justify-center'>
                     <img src={img}></img>
@@ -32,15 +60,18 @@ const Register = () => {
                                     </div>
                                     <div>
                                         <label>Email</label>
-                                        <input type="text" name="email" />
+                                        <input type="email" name="email" {...register("email", { required: true })} />
+                                        {errors.email && <span className='text-red-600'>Email is required</span>}
                                     </div>
                                     <div>
                                         <label>Photo Url</label>
-                                        <input type="text" name="photo" />
+                                        <input type="text" name="photo" {...register("photo", { required: true })} />
+                                        {errors.photo && <span className='text-red-600'>Photo Url is required</span>}
                                     </div>
                                     <div>
                                         <label>Password</label>
-                                        <input type="text" name="password" />
+                                        <input type="password" name="password" {...register("password", { required: true })} />
+                                        {errors.password && <span className='text-red-600'>Password is required</span>}
                                     </div>
                                     <button className='button w-full'>Sign Up</button>
                                 </form>

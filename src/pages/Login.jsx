@@ -1,24 +1,45 @@
 import img from '../assets/Login-cuate.png'
 import { Link } from 'react-router-dom';
 import SocialLogin from '../components/SocialLogin';
+import { useForm } from 'react-hook-form';
+import useAuth from '../hooks/useAuth';
+import { toast } from 'react-toastify';
 
 const Login = () => {
+
+    const { loginUser } = useAuth();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const onSubmit = async (data) => {
+        console.log(data)
+        loginUser(data.email, data.password)
+            .then(() => {
+                toast.success('Login Sucessfull')
+                reset();
+            })
+            .catch(error => {
+                console.log(error)
+                form.reset();
+            })
+    }
+
     return (
-        <div className='h-screen max-w-[1440px] mx-auto px-4 flex items-center'>
+        <div className='min-h-screen max-w-[1440px] mx-auto px-4 flex items-center'>
             <div className='w-full box-shadow rounded-lg register h-auto'>
                 <div className='form-box flex items-center py-8'>
                     <div className='w-full'>
                         <h1 className='text-center text-3xl font-medium mb-10 -mt-2'>Login Your Account</h1>
                         <div className='w-full flex items-center justify-center'>
                             <div className='max-w-[400px] w-full'>
-                                <form className='space-y-5'>
+                                <form className='space-y-5' onSubmit={handleSubmit(onSubmit)}>
                                     <div>
                                         <label>Email</label>
-                                        <input type="text" name="" />
+                                        <input type="text" name="email" {...register("email", { required: true })} />
+                                        {errors.email && <span className='text-red-600'>Email is required</span>}
                                     </div>
                                     <div>
                                         <label>Password</label>
-                                        <input type="text" name="" />
+                                        <input type="password" name="password" {...register("password", { required: true })} />
+                                        {errors.password && <span className='text-red-600'>Password is required</span>}
                                     </div>
                                     <button className='button w-full'>Sign In</button>
                                 </form>
