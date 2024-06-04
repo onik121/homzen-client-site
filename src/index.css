@@ -113,6 +113,39 @@
 }
 
 
+
+
+
+/* details page */
+.details-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+.property_status {
+    text-transform: uppercase;
+    background-color: #ed2027;
+    color: white;
+    width: fit-content;
+    border-radius: 2px;
+    padding: 2px 8px;
+    font-size: 13px;
+}
+
+.property-overview > div img {
+    background-color: #f7f7f7;
+    padding: 15px 15px;
+    border-radius: 4px;
+}
+
+.whish-list {
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 7px;
+}
+
+
+
 /* register page  */
 .register {
     display: grid;
@@ -152,6 +185,7 @@
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     overflow: hidden;
 }
+
 .line {
     width: 100%;
     height: 1px;
