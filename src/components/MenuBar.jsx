@@ -3,9 +3,11 @@ import { NavLink } from "react-router-dom";
 import logo from '../assets/logo.png'
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
+import useRole from "../hooks/useRole";
 
 const MenuBar = () => {
 
+    const [userRole] = useRole();
     const { user, logOut } = useAuth();
     const handleLogout = () => {
         logOut()
@@ -32,7 +34,12 @@ const MenuBar = () => {
                             <span className="block truncate text-sm font-medium">{user?.email}</span>
                         </DropdownHeader>
                         <DropdownItem>Dashboard</DropdownItem>
-                        <DropdownItem>Settings</DropdownItem>
+                        {
+                            user && userRole === 'admin' && <DropdownItem>admin</DropdownItem>
+                        }
+                        {
+                            user && userRole === 'agent' && <DropdownItem>agent</DropdownItem>
+                        }
                         {/* <DropdownDivider /> */}
                         <DropdownItem><button onClick={handleLogout}>Sign Out</button></DropdownItem>
                     </Dropdown> : <NavLink to={'/login'}><button className="sign-in">Sign In</button></NavLink>
