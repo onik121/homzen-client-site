@@ -16,8 +16,8 @@ const Dashborad = () => {
     const [userRole] = useRole();
 
     return (
-        <div className="flex">
-            <div className={` ${open ? "w-72" : "w-24 "} h-screen relative duration-300 dasboard px-5 py-8`}>
+        <div className="flex h-fit">
+            <div className={` ${open ? "w-72" : "w-24 "} relative duration-300 dasboard px-5 py-8`}>
                 <img src={close} className={`absolute cursor-pointer -right-5 top-5 ${!open && "rotate-180"} open-close`} onClick={() => setOpen(!open)} />
                 <div className="flex gap-x-3 items-center">
                     <img className="max-w-[40px]" src={logo} />
@@ -120,8 +120,7 @@ const Dashborad = () => {
                     </ul>
                 }
             </div>
-
-            <div className="h-screen flex-1 p-7">
+            <div className="h-full flex-1 p-7">
                 <Outlet></Outlet>
             </div>
         </div>

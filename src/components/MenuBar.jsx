@@ -4,6 +4,7 @@ import logo from '../assets/logo.png'
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
 import useRole from "../hooks/useRole";
+import Dashborad from './../pages/Dashborad';
 
 const MenuBar = () => {
 
@@ -49,7 +50,7 @@ const MenuBar = () => {
                     user && userRole === 'agent' && <NavLink to={'/dashboard/agentProfile'}>Agent</NavLink>
                 }
                 {
-                    user && userRole === 'none' && <NavLink to={'/dashboard/wishList'}>Normal</NavLink>
+                    user && userRole === 'none' && <NavLink to={'/dashboard/wishList'}>Dashborad</NavLink>
                 }
             </NavbarCollapse>
         </Navbar>

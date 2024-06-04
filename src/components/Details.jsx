@@ -14,13 +14,15 @@ import useAuth from "../hooks/useAuth";
 
 const Details = () => {
 
+
     const property = useLoaderData();
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
     const { property_image, property_status, property_title, property_location, price, agent_image,
-        agent_name, apartment_type, built_year, description, area, bedrooms, washrooms, garages, land_size, verification_status } = property;
+        agent_name, apartment_type, built_year, description, area, bedrooms, washrooms, garages, land_size, verification_status, _id } = property;
     const handleWishList = async () => {
         const wishListData = {
+            propertyId: _id,
             email: user?.email,
             property_image,
             property_title,
@@ -32,8 +34,11 @@ const Details = () => {
         }
         try {
             const { data } = await axiosSecure.post('/wishlist', wishListData)
-            if (data.insertedId) {
-                toast.success('Added Sucessfully');
+            if (data.insertedId === null) {
+                toast.warn('This item is already in your wishlist.');
+            }
+            else {
+                toast.success('Item successfully added to your wishlist.');
             }
         }
         catch (error) {
