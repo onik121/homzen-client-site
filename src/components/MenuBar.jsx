@@ -7,8 +7,8 @@ import useRole from "../hooks/useRole";
 
 const MenuBar = () => {
 
-    const [userRole] = useRole();
     const { user, logOut } = useAuth();
+    const [userRole] = useRole();
     const handleLogout = () => {
         logOut()
             .then(() => {
@@ -20,7 +20,7 @@ const MenuBar = () => {
                 });
             })
     }
-    
+
     return (
         <Navbar fluid className="max-w-[1440px] mx-auto">
             <NavbarBrand>
@@ -33,14 +33,6 @@ const MenuBar = () => {
                             <span className="block text-sm mb-1">{user?.displayName}</span>
                             <span className="block truncate text-sm font-medium">{user?.email}</span>
                         </DropdownHeader>
-                        <DropdownItem>Dashboard</DropdownItem>
-                        {
-                            user && userRole === 'admin' && <DropdownItem>admin</DropdownItem>
-                        }
-                        {
-                            user && userRole === 'agent' && <DropdownItem>agent</DropdownItem>
-                        }
-                        {/* <DropdownDivider /> */}
                         <DropdownItem><button onClick={handleLogout}>Sign Out</button></DropdownItem>
                     </Dropdown> : <NavLink to={'/login'}><button className="sign-in">Sign In</button></NavLink>
                 }
@@ -50,6 +42,15 @@ const MenuBar = () => {
             <NavbarCollapse className="menu-item">
                 <NavLink to={'/'}>Home</NavLink>
                 <NavLink to={'/allproperties'}>All Properties</NavLink>
+                {
+                    user && userRole === 'admin' && <NavLink to={'/dashboard'}>Admin</NavLink>
+                }
+                {
+                    user && userRole === 'agent' && <NavLink to={'/dashboard'}>Agent</NavLink>
+                }
+                {
+                    user && userRole === 'none' && <NavLink to={'/dashboard'}>Normal</NavLink>
+                }
             </NavbarCollapse>
         </Navbar>
     );

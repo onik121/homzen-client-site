@@ -8,11 +8,11 @@ const useRole = () => {
     const { user, loading } = useAuth();
     const axiosSecure = useAxiosSecure();
 
-    const { data: userRole = [] } = useQuery({
-        queryKey: ['userRole', user?.email],
+    const { data: userRole = [], isPending: isAdminLoading } = useQuery({
+        queryKey: [user?.email, 'userRole'],
         enabled: !loading,
         queryFn: async () => {
-            const { data } = await axiosSecure.get(`/users/role/${user?.email}`)
+            const { data } = await axiosSecure.get(`/users/role/${user.email}`)
             return data?.role;
         }
     })

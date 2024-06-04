@@ -17,6 +17,7 @@ import PrivateRoute from './privateroute/PrivateRoute';
 import { QueryClient, QueryClientProvider, } from '@tanstack/react-query'
 import Properties from './pages/Properties';
 import Details from './components/Details';
+import Dashborad from './pages/Dashborad';
 
 // Create a client
 const queryClient = new QueryClient()
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: 'dashboard',
+    element: <PrivateRoute><Dashborad></Dashborad></PrivateRoute>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
