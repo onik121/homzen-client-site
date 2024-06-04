@@ -43,13 +43,13 @@ const MenuBar = () => {
                 <NavLink to={'/'}>Home</NavLink>
                 <NavLink to={'/allproperties'}>All Properties</NavLink>
                 {
-                    user && userRole === 'admin' && <NavLink to={'/dashboard'}>Admin</NavLink>
+                    user && userRole === 'admin' && <NavLink to={'/dashboard/adminProfile'}>Admin</NavLink>
                 }
                 {
-                    user && userRole === 'agent' && <NavLink to={'/dashboard'}>Agent</NavLink>
+                    user && userRole === 'agent' && <NavLink to={'/dashboard/agentProfile'}>Agent</NavLink>
                 }
                 {
-                    user && userRole === 'none' && <NavLink to={'/dashboard'}>Normal</NavLink>
+                    user && userRole === 'none' && <NavLink to={'/dashboard/wishList'}>Normal</NavLink>
                 }
             </NavbarCollapse>
         </Navbar>

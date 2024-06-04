@@ -18,6 +18,11 @@ import { QueryClient, QueryClientProvider, } from '@tanstack/react-query'
 import Properties from './pages/Properties';
 import Details from './components/Details';
 import Dashborad from './pages/Dashborad';
+import AdminProfile from './dashboardpages/Admin/AdminProfile';
+import AgentProfile from './dashboardpages/Agent/AgentProfile';
+import WishList from './dashboardpages/Users/WishList';
+import PropertyBought from './dashboardpages/Users/PropertyBought';
+import MyReviews from './dashboardpages/Users/MyReviews';
 
 // Create a client
 const queryClient = new QueryClient()
@@ -52,7 +57,31 @@ const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <PrivateRoute><Dashborad></Dashborad></PrivateRoute>
+    element: <PrivateRoute><Dashborad></Dashborad></PrivateRoute>,
+    children: [
+      {
+        path: 'wishList',
+        element: <WishList></WishList>
+      },
+      {
+        path: 'yourProperty', 
+        element: <PropertyBought></PropertyBought>
+      },
+      {
+        path: 'myReviews',
+        element: <MyReviews></MyReviews>
+      },
+      // admin routes
+      {
+        path: 'adminProfile',
+        element: <AdminProfile></AdminProfile>
+      },
+      // agent routes
+      {
+        path: 'agentProfile',
+        element: <AgentProfile></AgentProfile>
+      }
+    ]
   }
 ]);
 

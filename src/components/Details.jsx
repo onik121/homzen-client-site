@@ -8,20 +8,45 @@ import built from '../assets/icons/crane.png'
 import land from '../assets/icons/land.png'
 import landarea from '../assets/icons/ruler.png'
 import love from '../assets/icons/heart.png'
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import { toast } from "react-toastify";
+import useAuth from "../hooks/useAuth";
 
 const Details = () => {
 
     const property = useLoaderData();
-
+    const axiosSecure = useAxiosSecure();
+    const { user } = useAuth();
     const { property_image, property_status, property_title, property_location, price, agent_image,
-        agent_name, apartment_type, built_year, description, area, bedrooms, washrooms, garages, land_size } = property;
+        agent_name, apartment_type, built_year, description, area, bedrooms, washrooms, garages, land_size, verification_status } = property;
+    const handleWishList = async () => {
+        const wishListData = {
+            email: user?.email,
+            property_image,
+            property_title,
+            property_location,
+            agent_name,
+            agent_image,
+            price,
+            verification_status,
+        }
+        try {
+            const { data } = await axiosSecure.post('/wishlist', wishListData)
+            if (data.insertedId) {
+                toast.success('Added Sucessfully');
+            }
+        }
+        catch (error) {
+            console.log(error.message)
+        }
+    }
 
     return (
         <div className="min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 flex items-center">
             <div className="details-box">
                 <div className="flex items-center mb-4 relative">
                     <img className="w-full rounded-md relative max-w-[690px]" src={property_image}></img>
-                    <button className="whish-list absolute left-3 top-5" title="Add to wishlist"><img className="w-[25px]" src={love}></img></button>
+                    <button onClick={handleWishList} className="whish-list absolute left-3 top-5" title="Add to wishlist"><img className="w-[25px]" src={love}></img></button>
                 </div>
                 <div className="">
                     <p className="property_status">for {property_status}</p>
