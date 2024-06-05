@@ -64,7 +64,7 @@ const router = createBrowserRouter([
         element: <WishList></WishList>
       },
       {
-        path: 'yourProperty', 
+        path: 'myProperty', 
         element: <PropertyBought></PropertyBought>
       },
       {

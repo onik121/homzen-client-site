@@ -1,5 +1,7 @@
 import React from 'react';
-
+import del from '../assets/icons/delete.png'
+import offer from '../assets/icons/offer.png'
+import location from '../assets/icons/location.png'
 
 const WishListCard = ({ item }) => {
     const { property_image, property_title, property_location, agent_name, agent_image, price, property_status, verification_status } = item;
@@ -14,11 +16,11 @@ const WishListCard = ({ item }) => {
                         <p className='capitalize'>{verification_status === 'verified' ? <p className='verified'>verified</p> : <p className='verification_status'>Not verified</p>}</p>
                     </div>
                     <div className="flex items-center gap-2">
-                        {/* <img className="w-5" src={locationIcon} alt="Location" /> */}
+                        <img className="w-5" src={location} alt="Location" />
                         <p>{property_location}</p>
                     </div>
                 </div>
-                <div className="border-t"></div>
+                <div className="line"></div>
                 <div className="px-5 py-4 flex items-center justify-between">
                     <div className="flex items-center gap-2">
                         <img className="w-9 h-9 rounded-full" src={agent_image} alt="Agent" />
@@ -29,10 +31,10 @@ const WishListCard = ({ item }) => {
                         <p>{property_status === 'rent' ? '/month' : '/SqFT'}</p>
                     </div>
                 </div>
-                <div className="border-t"></div>
+                <div className="line"></div>
                 <div className="px-5 py-4 flex justify-between">
-                    <button className="bg-red-500 text-white px-3 py-1 rounded">Delete</button>
-                    <button className="bg-blue-500 text-white px-3 py-1 rounded">Offer</button>
+                    <button><img src={offer}></img></button>
+                    <button><img src={del}></img></button>
                 </div>
             </div>
         </div>
