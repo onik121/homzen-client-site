@@ -262,3 +262,20 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-default-outline:fo
 .swal2-confirm:focus {
     box-shadow: none !important;
 }
+
+.proposal input {
+    outline: none;
+    height: 47px;
+    border-radius: 5px;
+}
+
+.proposal label {
+    font-weight: 500;
+}
+
+.proposal button{
+    background-color: #ed2027;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+}

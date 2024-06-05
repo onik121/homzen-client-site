@@ -5,6 +5,7 @@ import location from '../assets/icons/location.png'
 import Swal from 'sweetalert2'
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import useWishlist from '../hooks/useWishlist';
+import { Link } from 'react-router-dom';
 
 const WishListCard = ({ item }) => {
 
@@ -36,10 +37,43 @@ const WishListCard = ({ item }) => {
     }
 
     return (
-        <div className="border-2 overflow-hidden h-full flex flex-col">
-            <img src={property_image} className="w-full h-48 object-cover" alt="Property" />
-            <div className="flex flex-col justify-between flex-grow">
-                <div className="px-5 py-4">
+        // <div className="border-2 overflow-hidden h-full flex flex-col">
+        //     <img src={property_image} className="w-full h-48 object-cover" alt="Property" />
+        //     <div className="flex flex-col justify-between flex-grow">
+        //         <div className="px-5 py-4">
+        //             <div className="flex gap-3 items-center">
+        //                 <h1 className="text-2xl mb-3 text-black font-medium">{property_title}</h1>
+        //                 <p className='capitalize'>{verification_status === 'verified' ? <p className='verified'>verified</p> : <p className='verification_status'>Not verified</p>}</p>
+        //             </div>
+        //             <div className="flex items-center gap-2">
+        //                 <img className="w-5" src={location} alt="Location" />
+        //                 <p>{property_location}</p>
+        //             </div>
+        //         </div>
+        //         <div className="line"></div>
+        //         <div className="px-5 py-4 flex items-center justify-between">
+        //             <div className="flex items-center gap-2">
+        //                 <img className="w-9 h-9 rounded-full" src={agent_image} alt="Agent" />
+        //                 <p>{agent_name}</p>
+        //             </div>
+        //             <div className="flex items-center">
+        //                 <p className="text-xl font-medium">${price}</p>
+        //                 <p>{property_status === 'rent' ? '/month' : '/SqFT'}</p>
+        //             </div>
+        //         </div>
+        //         <div className="line"></div>
+        //         <div className="px-5 py-4 flex justify-between">
+        //             <Link to={`/dashboard/offer/id/${_id}`}><button><img src={offer}></img></button></Link>
+        //             <button onClick={() => handleDelete(_id)} ><img src={del}></img></button>
+        //         </div>
+        //     </div>
+        // </div>
+        <div className='grid grid-cols-2 border-2 overflow-hidden'>
+            <div>
+                <img className='w-full h-full' src={property_image}></img>
+            </div>
+            <div className='flex items-center'>
+                <div className="p-5 w-full h-auto">
                     <div className="flex gap-3 items-center">
                         <h1 className="text-2xl mb-3 text-black font-medium">{property_title}</h1>
                         <p className='capitalize'>{verification_status === 'verified' ? <p className='verified'>verified</p> : <p className='verification_status'>Not verified</p>}</p>
@@ -48,22 +82,22 @@ const WishListCard = ({ item }) => {
                         <img className="w-5" src={location} alt="Location" />
                         <p>{property_location}</p>
                     </div>
-                </div>
-                <div className="line"></div>
-                <div className="px-5 py-4 flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                        <img className="w-9 h-9 rounded-full" src={agent_image} alt="Agent" />
-                        <p>{agent_name}</p>
+                    <div className="line my-4"></div>
+                    <div className=" flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                            <img className="w-9 h-9 rounded-full" src={agent_image} alt="Agent" />
+                            <p>{agent_name}</p>
+                        </div>
+                        <div className="flex items-center">
+                            <p className="text-xl font-medium">${price}</p>
+                            <p>{property_status === 'rent' ? '/month' : '/SqFT'}</p>
+                        </div>
                     </div>
-                    <div className="flex items-center">
-                        <p className="text-xl font-medium">${price}</p>
-                        <p>{property_status === 'rent' ? '/month' : '/SqFT'}</p>
+                    <div className="line my-4"></div>
+                    <div className=" flex justify-between">
+                        <Link to={`/dashboard/offer/id/${_id}`}><button><img src={offer}></img></button></Link>
+                        <button onClick={() => handleDelete(_id)} ><img src={del}></img></button>
                     </div>
-                </div>
-                <div className="line"></div>
-                <div className="px-5 py-4 flex justify-between">
-                    <button><img src={offer}></img></button>
-                    <button onClick={() => handleDelete(_id)} ><img src={del}></img></button>
                 </div>
             </div>
         </div>

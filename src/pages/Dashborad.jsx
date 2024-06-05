@@ -125,7 +125,7 @@ const Dashborad = () => {
             </div>
 
             <div className="h-full flex-1 my-14">
-                <div className="max-w-[1500px] mx-auto border-2 p-10">
+                <div className="max-w-[1500px] mx-auto my-auto border-2 p-10">
                     <Outlet></Outlet>
                 </div>
             </div>

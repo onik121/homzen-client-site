@@ -29,7 +29,7 @@ const MenuBar = () => {
             </NavbarBrand>
             <div className="flex md:order-2">
                 {
-                    user ? <Dropdown arrowIcon={false} inline label={<Avatar alt="User settings" img={user?.photoURL} rounded />}>
+                    user ? <Dropdown arrowIcon={false} inline label={<Avatar alt="User" img={user?.photoURL} rounded />}>
                         <DropdownHeader>
                             <span className="block text-sm mb-1">{user?.displayName}</span>
                             <span className="block truncate text-sm font-medium">{user?.email}</span>

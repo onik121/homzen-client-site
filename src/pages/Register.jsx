@@ -12,31 +12,34 @@ import useAxiosPublic from '../hooks/useAxiosPublic';
 
 const Register = () => {
 
-    const { createUsers, user, setUser, updateUserProfile } = useAuth();
+    const { createUsers, user, setUser, updateUserProfile } = useContext(AuthContext);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
 
     const onSubmit = async (data) => {
         try {
-            await createUsers(data.email, data.password);
+            await createUsers(data.email, data.password)
+            .then(result => {
+                console.log(result.user)
+            })
             toast.success('Register Successful');
             await updateUserProfile(data.name, data.photo);
-            setUser({ ...user, photoURL: data.photo, displayName: data.name, });
+            setUser({ ...user, photoURL: data.photo, displayName: data.name, email:data.email, });
             // create user entry into the database
             const userInfo = {
                 name: data.name,
                 email: data.email,
+                image: data.photo,
             };
             try {
-                const { data } = await axiosPublic.post('/users', userInfo);
-                console.log(data)
+                await axiosPublic.post('/users', userInfo);
             }
             catch (error) {
                 console.error('Error creating user in the database:', error);
             }
             reset();
-            navigate('/');
+            // navigate('/');
         } catch (error) {
             console.log(error);
             toast.error('Registration failed');

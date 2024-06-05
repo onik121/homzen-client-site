@@ -14,23 +14,16 @@ import useAuth from "../hooks/useAuth";
 
 const Details = () => {
 
-
     const property = useLoaderData();
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
     const { property_image, property_status, property_title, property_location, price, agent_image,
-        agent_name, apartment_type, built_year, description, area, bedrooms, washrooms, garages, land_size, verification_status, _id } = property;
+        agent_name, apartment_type, built_year, description, area, bedrooms, washrooms, garages, land_size, verification_status, _id, agent_email } = property;
     const handleWishList = async () => {
         const wishListData = {
-            propertyId: _id,
-            email: user?.email,
-            property_image,
-            property_title,
-            property_location,
-            agent_name,
-            agent_image,
-            price,
-            verification_status,
+            propertyId: _id, email: user?.email, property_image, property_title,
+            property_location, agent_name, agent_image, price, verification_status,
+            description, property_status, agent_email,
         }
         try {
             const { data } = await axiosSecure.post('/wishlist', wishListData)
@@ -47,7 +40,7 @@ const Details = () => {
     }
 
     return (
-        <div className="min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 flex items-center">
+        <div className="min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 pt-16 flex items-center">
             <div className="details-box">
                 <div className="flex items-center mb-4 relative">
                     <img className="w-full rounded-md relative max-w-[690px]" src={property_image}></img>

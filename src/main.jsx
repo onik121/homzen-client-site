@@ -23,6 +23,7 @@ import AgentProfile from './dashboardpages/Agent/AgentProfile';
 import WishList from './dashboardpages/Users/WishList';
 import PropertyBought from './dashboardpages/Users/PropertyBought';
 import MyReviews from './dashboardpages/Users/MyReviews';
+import Offer from './dashboardpages/Users/Offer';
 
 // Create a client
 const queryClient = new QueryClient()
@@ -70,6 +71,11 @@ const router = createBrowserRouter([
       {
         path: 'myReviews',
         element: <MyReviews></MyReviews>
+      },
+      {
+        path: 'offer/id/:id',
+        element: <Offer></Offer>,
+        loader: ({ params }) => fetch(`http://localhost:5000/wishlist/id/${params.id}`)
       },
       // admin routes
       {
