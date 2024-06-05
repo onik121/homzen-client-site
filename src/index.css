@@ -224,3 +224,41 @@
     border: 1px solid rgb(226, 226, 226);
     border-radius: 5px;
 }
+
+.swal2-confirm {
+    background-color: #3f3f3f !important;
+    border: none !important;
+}
+
+.swal2-title {
+    color: #3f3f3f;
+}
+
+.swal2-warning {
+    border-color: red !important;
+    color: red !important;
+}
+
+.swal2-cancel {
+    background-color: red !important;
+}
+
+.swal2-success-ring {
+    border: .25em solid green!important;
+}
+
+div:where(.swal2-icon).swal2-success [class^=swal2-success-line] {
+    background-color: green !important;
+}
+
+div:where(.swal2-container) button:where(.swal2-styled).swal2-default-outline:focus {
+    box-shadow: none !important;
+}
+
+.swal2-confirm {
+    background: black !important;
+}
+
+.swal2-confirm:focus {
+    box-shadow: none !important;
+}
