@@ -16,10 +16,9 @@ const Dashborad = () => {
     const [userRole] = useRole();
 
     return (
-        <div className="flex h-fit relative">
-
-            <div className={` ${open ? "w-72" : "w-24 "} relative duration-300 dasboard py-8 min-h-screen`}>
-                <div className={` ${open ? "w-[288px]" : "w-24"} fixed duration-300 px-5`}>
+        <div className="flex h-full relative">
+            <div className={` ${open ? "w-56" : "w-24 "} relative duration-300 dasboard py-8 min-h-screen z-50`}>
+                <div className={` ${open ? "w-56" : "w-24"} fixed duration-300 px-5 relative`}>
                     <img src={close} className={`absolute cursor-pointer -right-5 top-5 ${!open && "rotate-180"} open-close`} onClick={() => setOpen(!open)} />
                     <div className="flex gap-x-3 items-center">
                         <img className="max-w-[40px]" src={logo} />
@@ -36,7 +35,7 @@ const Dashborad = () => {
                             <NavLink to={'/dashboard/myProperty'}>
                                 <li className={`flex items-center gap-3 ${!open && "justify-center"}`}>
                                     <img src={house}></img>
-                                    <p className={`${!open && "hidden"} origin-left duration-200 font-medium`}>My Property</p>
+                                    <p className={`${!open && "hidden"} origin-left duration-200 font-medium`}>My Properties</p>
                                 </li>
                             </NavLink>
                             <NavLink to={'/dashboard/myReviews'}>
@@ -124,8 +123,8 @@ const Dashborad = () => {
                 </div>
             </div>
 
-            <div className="h-full flex-1 my-14">
-                <div className="max-w-[1500px] mx-auto my-auto border-2 p-10">
+            <div className="h-full flex-1 m-14 overflow-x-auto">
+                <div className="min-w-[1500px] mx-auto my-auto border-2 p-10">
                     <Outlet></Outlet>
                 </div>
             </div>

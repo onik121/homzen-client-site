@@ -23,7 +23,11 @@ const Offer = () => {
             return;
         }
         const status = 'pending'
-        const bidData = { buyerEmail, buyerName, buyerBidAmount, property_image, property_location, property_status, agent_name, status, agent_email, propertyId: _id }
+        const bidData = {
+            buyerEmail, buyerName, buyerBidAmount, property_image,
+            property_location, property_status, agent_name, status, agent_email,
+            propertyId: _id, property_title, property_price: price, agent_image, property_status
+        }
         try {
             const { data } = await axiosSecure.post('/offer', bidData)
             if (data.insertedId === null) {

@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .navbar {
     border-bottom: 1px solid whitesmoke;
 }
@@ -222,7 +223,7 @@
 
 .border-2 {
     border: 1px solid rgb(226, 226, 226);
-    border-radius: 5px;
+    border-radius: 5px !important;
 }
 
 .swal2-confirm {
@@ -278,4 +279,12 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-default-outline:fo
     color: white;
     border-radius: 5px;
     padding: 10px 20px;
+}
+
+.drop-shadow-md{
+    display: none;
+}
+
+.border-right {
+    border-right: 1px solid rgb(226, 226, 226);
 }
