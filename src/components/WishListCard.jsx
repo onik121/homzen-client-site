@@ -8,7 +8,6 @@ import useWishlist from '../hooks/useWishlist';
 import { Link } from 'react-router-dom';
 
 const WishListCard = ({ item }) => {
-
     const { property_image, property_title, property_location, agent_name, agent_image, price, property_status, verification_status, _id } = item;
     const axiosSecure = useAxiosSecure();
     const [, refetch] = useWishlist();
@@ -68,6 +67,7 @@ const WishListCard = ({ item }) => {
         //         </div>
         //     </div>
         // </div>
+
         <div className='grid grid-cols-2 border-2 overflow-hidden'>
             <div>
                 <img className='w-full h-full' src={property_image}></img>
@@ -95,7 +95,7 @@ const WishListCard = ({ item }) => {
                     </div>
                     <div className="line my-4"></div>
                     <div className=" flex justify-between">
-                        <Link to={`/dashboard/offer/id/${_id}`}><button><img src={offer}></img></button></Link>
+                        <Link to={`/offer/id/${_id}`}><button><img src={offer}></img></button></Link>
                         <button onClick={() => handleDelete(_id)} ><img src={del}></img></button>
                     </div>
                 </div>

@@ -20,7 +20,7 @@ const PropertyBought = () => {
         }
     })
     return (
-        <div>
+        <div className="min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 pt-20 mb-5">
             <h1 className='text-3xl font-medium text-black mb-6'>My Properties</h1>
             <div className="">
                 <Table className="border-2">

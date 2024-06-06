@@ -17,7 +17,7 @@ const useRole = () => {
         }
     })
 
-    return [userRole]
+    return [userRole, isAdminLoading]
 };
 
 export default useRole;

@@ -20,10 +20,10 @@ import Details from './components/Details';
 import Dashborad from './pages/Dashborad';
 import AdminProfile from './dashboardpages/Admin/AdminProfile';
 import AgentProfile from './dashboardpages/Agent/AgentProfile';
-import WishList from './dashboardpages/Users/WishList';
-import PropertyBought from './dashboardpages/Users/PropertyBought';
-import MyReviews from './dashboardpages/Users/MyReviews';
-import Offer from './dashboardpages/Users/Offer';
+import WishList from './pages/Users/WishList';
+import PropertyBought from './pages/Users/PropertyBought';
+import MyReviews from './pages/Users/MyReviews';
+import Offer from './pages/Users/Offer';
 
 // Create a client
 const queryClient = new QueryClient()
@@ -53,30 +53,30 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login></Login>
-      }
+      },
+      {
+        path: '/wishlist',
+        element: <PrivateRoute><WishList></WishList></PrivateRoute>
+      },
+      {
+        path: '/myProperty',
+        element: <PrivateRoute><PropertyBought></PropertyBought></PrivateRoute>
+      },
+      {
+        path: '/myReviews',
+        element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
+      },
+      {
+        path: '/offer/id/:id',
+        element: <PrivateRoute><Offer></Offer></PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/wishlist/id/${params.id}`)
+      },
     ]
   },
   {
     path: 'dashboard',
     element: <PrivateRoute><Dashborad></Dashborad></PrivateRoute>,
     children: [
-      {
-        path: 'wishList',
-        element: <WishList></WishList>
-      },
-      {
-        path: 'myProperty', 
-        element: <PropertyBought></PropertyBought>
-      },
-      {
-        path: 'myReviews',
-        element: <MyReviews></MyReviews>
-      },
-      {
-        path: 'offer/id/:id',
-        element: <Offer></Offer>,
-        loader: ({ params }) => fetch(`http://localhost:5000/wishlist/id/${params.id}`)
-      },
       // admin routes
       {
         path: 'adminProfile',

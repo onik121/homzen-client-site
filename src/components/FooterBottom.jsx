@@ -5,9 +5,9 @@ import logo from '../assets/logo.png'
 
 const FooterBottom = () => {
     return (
-        <Footer className="bg-red- rounded-none shadow-none px-4">
+        <Footer className="bg-[#f7f7f7] rounded-none shadow-none pt-10">
             <div className="w-full">
-                <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1 max-w-[1410px] mx-auto">
+                <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1 max-w-[1440px] mx-auto px-4">
                     <div>
                         <FooterBrand
                             href="#"
@@ -34,8 +34,9 @@ const FooterBottom = () => {
                         <Link className="block">hasanjahid557788@gmail.com</Link>
                     </div>
                 </div>
-                <FooterDivider />
-                <div className="w-full sm:flex sm:items-center sm:justify-between pb-5 max-w-[1410px] mx-auto">
+                {/* <FooterDivider /> */}
+                <div className="footer-divider my-8"></div>
+                <div className="w-full sm:flex sm:items-center sm:justify-between pb-5 max-w-[1440px] mx-auto px-4">
                     <FooterCopyright href="#" by="Flowbite™" year={2022} />
                     <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
                         <FooterIcon href="#" icon={BsFacebook} />

@@ -7,16 +7,16 @@ const useWishlist = () => {
     const { user, loading } = useAuth();
     const axiosSecure = useAxiosSecure();
 
-    const { data: wishLists = [], refetch } = useQuery({
-        queryKey: ['wishlist', user.email],
+    const { data: wishLists = [], refetch, isPending:dataLoading } = useQuery({
+        queryKey: ['wishlist', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const { data } = await axiosSecure.get(`/wishlist/${user.email}`)
+            const { data } = await axiosSecure.get(`/wishlist/${user?.email}`)
             return data;
         }
     })
 
-    return [wishLists, refetch]
+    return [wishLists, refetch, dataLoading]
 
 };
 
