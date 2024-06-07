@@ -24,6 +24,7 @@ import WishList from './pages/Users/WishList';
 import PropertyBought from './pages/Users/PropertyBought';
 import MyReviews from './pages/Users/MyReviews';
 import Offer from './pages/Users/Offer';
+import RequestedProperties from './dashboardpages/Agent/RequestedProperties';
 
 // Create a client
 const queryClient = new QueryClient()
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
       {
         path: 'agentProfile',
         element: <AgentProfile></AgentProfile>
+      },
+      {
+        path: 'requestedproperties',
+        element: <RequestedProperties></RequestedProperties>
       }
     ]
   }

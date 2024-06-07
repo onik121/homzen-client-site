@@ -40,7 +40,7 @@ const Details = () => {
     }
 
     return (
-        <div className="min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 pt-16 flex items-center">
+        <div className="min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 pt-14 flex items-center">
             <div className="details-box">
                 <div className="flex items-center mb-4 relative">
                     <img className="w-full rounded-md relative max-w-[690px]" src={property_image}></img>

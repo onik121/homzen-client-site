@@ -5,13 +5,14 @@ import { Table } from "flowbite-react";
 import location from '../../assets/icons/location.png'
 import deleteIcon from '../../assets/icons/delete.png'
 import editIcon from '../../assets/icons/valid.png'
+import Swal from "sweetalert2";
 
 const PropertyBought = () => {
 
     const { user, loading } = useAuth();
     const axiosSecure = useAxiosSecure();
 
-    const { data: propertyBought = [] } = useQuery({
+    const { data: propertyBought = [], refetch } = useQuery({
         queryKey: ['propertyBought', user.email],
         enabled: !loading,
         queryFn: async () => {
@@ -19,6 +20,44 @@ const PropertyBought = () => {
             return data;
         }
     })
+
+    const handleDelete = (id) => {
+        console.log(id)
+        Swal.fire({
+            title: "Did you want to delete it?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const { data } = await axiosSecure.delete(`/offer/${id}`)
+                if (data.deletedCount > 0) {
+                    Swal.fire({
+                        title: "Deleted Successfully",
+                        icon: "success"
+                    });
+                    refetch();
+                }
+            }
+        });
+    }
+
+    const getStatusClass = (status) => {
+        switch (status) {
+            case 'pending':
+                return 'bg-yellow-300 text-black';
+            case 'reject':
+                return 'bg-red-600 text-white';
+            case 'accept':
+                return 'bg-green-500 text-white';
+            default:
+                return '';
+        }
+    };
+
     return (
         <div className="min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 pt-20 mb-5">
             <h1 className='text-3xl font-medium text-black mb-6'>My Properties</h1>
@@ -55,11 +94,15 @@ const PropertyBought = () => {
                                         </div>
                                     </Table.Cell>
                                     <Table.Cell className="border-right text-center bg-red- max-w-[0px]"><p>${item.buyerBidAmount}</p></Table.Cell>
-                                    <Table.Cell className="border-right text-center max-w-[0px]"><div className="bg-yellow-300 w-fit text-white mx-auto capitalize rounded px-2 py-[2px]">{item.status}</div></Table.Cell>
+                                    <Table.Cell className="border-right text-center max-w-[0px]">
+                                        <div className={`w-fit mx-auto capitalize rounded px-2 py-[2px] ${getStatusClass(item.status)}`}>
+                                            {item.status}
+                                        </div>
+                                    </Table.Cell>
                                     <Table.Cell className="bg-red- max-w-[0px]">
                                         <div className="bg-blue- w-fit mx-auto space-y-4">
-                                            <button className="flex items-center gap-2" disabled={item.status === 'pending'}><img src={editIcon}></img>Pay</button>
-                                            <button className="flex items-center gap-2"><img src={deleteIcon}></img>Delete</button>
+                                            {item.status == 'accept' && <button className="flex items-center gap-2" disabled={item.status === 'pending'}><img src={editIcon}></img>Pay</button>}
+                                            <button className="flex items-center gap-2" onClick={() => handleDelete(item._id)}><img src={deleteIcon}></img>Delete</button>
                                         </div>
                                     </Table.Cell>
                                 </Table.Row>

@@ -7,7 +7,7 @@ import useAxiosSecure from './../../hooks/useAxiosSecure';
 const Offer = () => {
 
     const item = useLoaderData();
-    const { property_image, property_title, property_location, agent_name, agent_image, price, property_status, description, agent_email, _id } = item;
+    const { property_image, property_title, property_location, agent_name, agent_image, price, property_status, description, agent_email, _id, propertyId } = item;
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
 
@@ -26,7 +26,7 @@ const Offer = () => {
         const bidData = {
             buyerEmail, buyerName, buyerBidAmount, property_image,
             property_location, property_status, agent_name, status, agent_email,
-            propertyId: _id, property_title, property_price: price, agent_image, property_status
+            propertyId, property_title, property_price: price, agent_image, property_status
         }
         try {
             const { data } = await axiosSecure.post('/offer', bidData)
@@ -45,7 +45,7 @@ const Offer = () => {
     }
 
     return (
-        <div className="min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 pt-14  bg-red-100">
+        <div className="min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 pt-14 flex items-center">
             <div className="w-full">
                 <h1 className='text-3xl font-medium text-black mb-6'>Send A Proposal</h1>
                 <div className="details-box">

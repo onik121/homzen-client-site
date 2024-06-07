@@ -30,7 +30,8 @@ const Dashboard = () => {
             { to: '/dashboard/agentProfile', icon: profileIcon, label: 'Agent Profile' },
             { to: '/', icon: houseIcon, label: 'Add' },
             { to: '/', icon: usersIcon, label: 'Properties' },
-            { to: '/', icon: reviewIcon, label: 'Sold' },
+            { to: '/', icon: reviewIcon, label: 'My Sold' },
+            { to: '/dashboard/requestedproperties', icon: usersIcon, label: 'Offred' },
             { to: '/', icon: backIcon, label: 'Go Back' },
         ];
 
@@ -46,11 +47,11 @@ const Dashboard = () => {
         ));
     };
 
-    const skeletonCount = userRole === 'admin' ? 6 : 5;
+    const skeletonCount = userRole === 'admin' ? 5 : 6;
 
     return (
-        <div className="flex h-full relative">
-            <div className={`${open ? "w-56" : "w-24"} relative duration-300 dashboard py-8 min-h-screen z-50`}>
+        <div className="flex h-full relative ">
+            <div className={`${open ? "w-56" : "w-24"} relative duration-300 py-8 min-h-screen z-50 bg-[#f2f2f2]`}>
                 <div className={`${open ? "w-56" : "w-24"} fixed duration-300 px-5 relative`}>
                     <img
                         src={closeIcon}
