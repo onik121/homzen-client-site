@@ -1,10 +1,22 @@
+import { useQuery } from '@tanstack/react-query';
 import WishListCard from '../../components/WishListCard';
-import useWishlist from '../../hooks/useWishlist';
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
+import useAuth from '../../hooks/useAuth';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const WishList = () => {
-    const [wishLists, , dataLoading] = useWishlist();
+
+
+    const { user, loading } = useAuth();
+    const axiosSecure = useAxiosSecure();
+
+    const { data: wishLists = [], refetch, isPending:dataLoading } = useQuery({
+        queryKey: ['wishlist', user?.email],
+        enabled: !loading,
+        queryFn: async () => {
+            const { data } = await axiosSecure.get(`/wishlist/${user?.email}`)
+            return data;
+        }
+    })
 
     return (
         <div className='min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 pt-20 pb-12'>
@@ -14,7 +26,7 @@ const WishList = () => {
                 <div className='grid grid-cols-2 gap-6'>
                     {
                         wishLists.map(item => (
-                            <WishListCard key={item._id} item={item} />
+                            <WishListCard key={item._id} item={item} refetch={refetch}/>
                         ))
                     }
                 </div>

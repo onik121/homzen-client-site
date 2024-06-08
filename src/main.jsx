@@ -26,6 +26,8 @@ import MyReviews from './pages/Users/MyReviews';
 import Offer from './pages/Users/Offer';
 import RequestedProperties from './dashboardpages/Agent/RequestedProperties';
 import AddProperty from './dashboardpages/Agent/AddProperty';
+import AddedProperties from './dashboardpages/Agent/AddedProperties';
+import EditAddedProperty from './components/EditAddedProperty';
 
 // Create a client
 const queryClient = new QueryClient()
@@ -96,6 +98,15 @@ const router = createBrowserRouter([
       {
         path: 'addproperty',
         element: <AddProperty></AddProperty>
+      },
+      {
+        path: 'addedproperties',
+        element: <AddedProperties></AddedProperties>
+      },
+      {
+        path: '/dashboard/addedproperties/edit/:id',
+        element: <EditAddedProperty></EditAddedProperty>,
+        loader: ({ params }) => fetch(`http://localhost:5000/properties/${params.id}`)
       }
     ]
   }

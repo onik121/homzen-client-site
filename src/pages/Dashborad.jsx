@@ -29,7 +29,7 @@ const Dashboard = () => {
         const agentItems = [
             { to: '/dashboard/agentProfile', icon: profileIcon, label: 'Agent Profile' },
             { to: '/dashboard/addproperty', icon: houseIcon, label: 'Add Property' },
-            { to: '/', icon: usersIcon, label: 'Added Properties' },
+            { to: '/dashboard/addedproperties', icon: usersIcon, label: 'Added Properties' },
             { to: '/', icon: reviewIcon, label: 'Sold Properties' },
             { to: '/dashboard/requestedproperties', icon: usersIcon, label: 'Offred Properties' },
             { to: '/', icon: backIcon, label: 'Go Back' },
