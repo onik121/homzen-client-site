@@ -28,6 +28,7 @@ import RequestedProperties from './dashboardpages/Agent/RequestedProperties';
 import AddProperty from './dashboardpages/Agent/AddProperty';
 import AddedProperties from './dashboardpages/Agent/AddedProperties';
 import EditAddedProperty from './components/EditAddedProperty';
+import Error from './pages/Error';
 
 // Create a client
 const queryClient = new QueryClient()
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: '/',
