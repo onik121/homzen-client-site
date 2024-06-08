@@ -219,7 +219,7 @@
 }
 
 .dashboard-menu a.active li{
-    background-color: rgba(237, 32, 39, 0.1)
+    background-color: rgba(237, 32, 39, 0.1);
 }
 
 .border-2 {
@@ -301,6 +301,51 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-default-outline:fo
 .accept {
     background-color: green;
     color: white !important;
+}
+
+
+/* add-property */
+.add-property label{
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.add-property input, textarea{
+    outline: none;
+    width: 100%;
+    height: 47px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.add-property textarea {
+    min-height: 150px !important;
+}
+
+.add-property select {
+    width: 100%;
+    height: 47px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+input,select,textarea:focus {
+    outline: none;
+    border-color: black !important;
+    box-shadow: none !important;
+}
+
+.react-datepicker-wrapper {
+    display: flex !important;
+    padding: 0;
+    border: 0;
+}
+
+.submit {
+    background-color: #ed2027;
+    color: white;
+    border-radius: 5px;
+    font-weight: 500;
+    padding: 8px 18px;
 }
 
 /* footer */

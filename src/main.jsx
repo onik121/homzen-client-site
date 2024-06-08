@@ -25,6 +25,7 @@ import PropertyBought from './pages/Users/PropertyBought';
 import MyReviews from './pages/Users/MyReviews';
 import Offer from './pages/Users/Offer';
 import RequestedProperties from './dashboardpages/Agent/RequestedProperties';
+import AddProperty from './dashboardpages/Agent/AddProperty';
 
 // Create a client
 const queryClient = new QueryClient()
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
       {
         path: 'requestedproperties',
         element: <RequestedProperties></RequestedProperties>
+      },
+      {
+        path: 'addproperty',
+        element: <AddProperty></AddProperty>
       }
     ]
   }

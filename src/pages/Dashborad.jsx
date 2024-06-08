@@ -28,10 +28,10 @@ const Dashboard = () => {
 
         const agentItems = [
             { to: '/dashboard/agentProfile', icon: profileIcon, label: 'Agent Profile' },
-            { to: '/', icon: houseIcon, label: 'Add' },
-            { to: '/', icon: usersIcon, label: 'Properties' },
-            { to: '/', icon: reviewIcon, label: 'My Sold' },
-            { to: '/dashboard/requestedproperties', icon: usersIcon, label: 'Offred' },
+            { to: '/dashboard/addproperty', icon: houseIcon, label: 'Add Property' },
+            { to: '/', icon: usersIcon, label: 'Added Properties' },
+            { to: '/', icon: reviewIcon, label: 'Sold Properties' },
+            { to: '/dashboard/requestedproperties', icon: usersIcon, label: 'Offred Properties' },
             { to: '/', icon: backIcon, label: 'Go Back' },
         ];
 
@@ -51,8 +51,8 @@ const Dashboard = () => {
 
     return (
         <div className="flex h-full relative ">
-            <div className={`${open ? "w-56" : "w-24"} relative duration-300 py-8 min-h-screen z-50 bg-[#f2f2f2]`}>
-                <div className={`${open ? "w-56" : "w-24"} fixed duration-300 px-5 relative`}>
+            <div className={`${open ? "w-72" : "w-24"} relative duration-300 py-8 min-h-screen z-50 bg-[#f2f2f2]`}>
+                <div className={`${open ? "w-72" : "w-24"} fixed duration-300 px-5 relative`}>
                     <img
                         src={closeIcon}
                         alt="Toggle sidebar"
@@ -74,8 +74,8 @@ const Dashboard = () => {
                     )}
                 </div>
             </div>
-            <div className="h-full flex-1 m-14 overflow-x-auto">
-                <div className="min-w-[1500px] mx-auto my-auto border-2 p-10">
+            <div className="h-full flex-1 m-14 overflow-hidden">
+                <div className="overflow-hidden">
                     <Outlet />
                 </div>
             </div>

@@ -49,9 +49,9 @@ const RequestedProperties = () => {
     const hasPendingItems = requested.some(item => item.status === 'pending');
 
     return (
-        <div className="">
+        <div className="overflow-x-auto border-2 p-10">
             <h1 className='text-3xl font-medium text-black mb-6'>Requested Properties</h1>
-            <div className="rounded-md border-2">
+            <div className="rounded-md border-2 mx-auto min-w-[1200px]">
                 <Table>
                     <Table.Head>
                         <Table.HeadCell>Property Details</Table.HeadCell>
@@ -79,20 +79,20 @@ const RequestedProperties = () => {
                                             </div>
                                         </div>
                                     </Table.Cell>
-                                    <Table.Cell className="border-right bg-blue- max-w-[0px]">
+                                    <Table.Cell className="border-right max-w-[0px]">
                                         <div className="w-fit mx-auto gap-3">
                                             <p>Email: {item.buyerEmail}</p>
                                             <p>Name: {item.buyerName}</p>
                                         </div>
                                     </Table.Cell>
                                     <Table.Cell className="border-right text-center max-w-[0px]"><p>${item.buyerBidAmount}</p></Table.Cell>
-                                    <Table.Cell className="border-right text-center max-w-[0px]">
+                                    <Table.Cell className="text-center max-w-[0px]">
                                         <div className={`w-fit mx-auto capitalize rounded px-2 py-[2px] ${getStatusClass(item.status)}`}>
                                             {item.status}
                                         </div>
                                     </Table.Cell>
                                     {item.status === 'pending' && (
-                                        <Table.Cell className="bg-red- max-w-[0px] space-y-5">
+                                        <Table.Cell className="max-w-[0px] space-y-5">
                                             <div className="bg-green-600 w-fit text-white mx-auto capitalize rounded px-2 py-[2px]"><button onClick={() => handleButtonClick('accept', item._id)}>Accept</button></div>
                                             <div className="bg-red-600 w-fit text-white mx-auto capitalize rounded px-2 py-[2px]"> <button onClick={() => handleButtonClick('reject', item._id)}>Reject</button></div>
                                         </Table.Cell>
