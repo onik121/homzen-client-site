@@ -8,9 +8,9 @@ import Swal from 'sweetalert2';
 const MyReviews = () => {
 
     const axiosSecure = useAxiosSecure();
-    const { user, loading } = useAuth();
+    const { user } = useAuth();
 
-    const { data: reviews = [], refetch} = useQuery({
+    const { data: reviews = [], refetch } = useQuery({
         queryKey: [user?.email, 'reviews'],
         queryFn: async () => {
             const { data } = await axiosSecure.get(`/reviews/email/${user.email}`);
@@ -45,7 +45,7 @@ const MyReviews = () => {
     return (
         <div className='min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 pt-20 pb-12 flex items-center'>
             <div>
-                <h1 className='text-3xl font-medium text-black mb-6'>My Wishlist</h1>
+                <h1 className='text-3xl font-medium text-black mb-6'>My Reviews</h1>
                 <div className='grid grid-cols-3 gap-6'>
                     {
                         reviews.map(item => (

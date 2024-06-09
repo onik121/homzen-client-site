@@ -30,6 +30,7 @@ import AddedProperties from './dashboardpages/Agent/AddedProperties';
 import EditAddedProperty from './components/EditAddedProperty';
 import Error from './pages/Error';
 import { propertyLoader } from './loader/propertyLoader';
+import ManageReviews from './dashboardpages/Admin/ManageReviews';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
       {
         path: 'adminProfile',
         element: <AdminProfile></AdminProfile>
+      },
+      {
+        path: 'managereviews',
+        element: <ManageReviews></ManageReviews>
       },
       // agent routes
       {
