@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       {
         path: '/details/:id',
         element: <PrivateRoute><Details></Details></PrivateRoute>,
-        loader: propertyLoader
+        loader: propertyLoader,
       },
       {
         path: '/register',
