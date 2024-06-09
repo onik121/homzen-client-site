@@ -2,6 +2,7 @@ import Advertisement from "../components/Advertisement";
 import Hero from "../components/Hero";
 import OurAgents from "../components/OurAgents";
 import WhatWeDo from "../components/WhatWeDo";
+import Review from "./Review";
 
 
 
@@ -17,6 +18,7 @@ const Home = () => {
                 </div>
                 <Advertisement></Advertisement>
             </div>
+            <Review></Review>
             <OurAgents></OurAgents>
         </div>
     );

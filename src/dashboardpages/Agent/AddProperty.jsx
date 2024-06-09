@@ -47,7 +47,6 @@ const AddProperty = () => {
                     agent_email: user.email,
                     property_image: res.data.data.display_url,
                 }
-                console.log(propertyItem)
                 try {
                     const response = await axiosSecure.post('/properties', propertyItem)
                     if (response.data.insertedId) {

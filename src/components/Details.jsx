@@ -11,10 +11,21 @@ import love from '../assets/icons/heart.png'
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, A11y } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation'
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import { Modal } from "flowbite-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 const Details = () => {
 
-    const property = useLoaderData();
+    const [openModal, setOpenModal] = useState(false);
+    const { property, reviews } = useLoaderData();
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
     const { property_image, property_status, property_title, property_location, price, agent_image,
@@ -39,8 +50,34 @@ const Details = () => {
         }
     }
 
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const onSubmit = async (data) => {
+        const reviewData = {
+            reviewer_image: user.photoURL,
+            reviewer_email: user.email,
+            reviewer_name: user.displayName,
+            review_description: data.review,
+            property_title: property_title,
+            propertyId: _id,
+            created_at: new Date(),
+        }
+        console.log(reviewData)
+        try {
+            const response = await axiosSecure.post('/reviews', reviewData)
+            if (response.data.insertedId) {
+                toast.success('Review Added Successfully');
+                reset();
+                setOpenModal(false);
+            }
+        }
+        catch (error) {
+            console.log(error.code)
+            toast.error(`Error: ${error.code}`);
+        }
+    }
+
     return (
-        <div className="min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 pt-14 flex items-center">
+        <div className="min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 pt-32 pb-[72px]">
             <div className="details-box">
                 <div className="flex items-center mb-4 relative">
                     <img className="w-full rounded-md relative max-w-[690px]" src={property_image}></img>
@@ -129,9 +166,45 @@ const Details = () => {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
+            <Swiper className="mt-10" modules={[Navigation, Pagination, A11y]}
+                spaceBetween={50}
+                slidesPerView={3}
+                navigation>
+                {
+                    reviews.slice(0, 6).map(item => <SwiperSlide key={item._id}>
+                        <div className='border-2 p-4 min-h-[230px]'>
+                            <div className='space-y-5 min-h-full'>
+                                <h1 className='text-3xl font-medium text-black'>{item.property_title}</h1>
+                                <p className='text-lg'>{item.review_description}</p>
+                                <div className='flex items-center gap-3'>
+                                    <img className='w-[35px] rounded-full' src={item.reviewer_image}></img>
+                                    <p>{item.reviewer_name}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </SwiperSlide>)
+                }
+            </Swiper>
+            {/* modal */}
+            <div className="flex items-center justify-center mt-10">
+                <button className="button" onClick={() => setOpenModal(true)}>Add A Review</button>
+            </div>
+            <Modal show={openModal} size="md" popup onClose={() => setOpenModal(false)}>
+                <Modal.Header />
+                <Modal.Body>
+                    <div>
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <textarea className="min-h-[150px]" placeholder="Write Your Review Here..." {...register("review", { required: true })}></textarea>
+                            {errors.review && <span className='text-red-600'>Please Write Your Review</span>}
+                            <div className="mt-5">
+                                <button className="button">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </Modal.Body>
+            </Modal>
         </div>
     );
 };

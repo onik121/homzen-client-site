@@ -13,7 +13,6 @@ const Login = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
     const onSubmit = async (data) => {
-        console.log(data)
         loginUser(data.email, data.password)
             .then(() => {
                 toast.success('SignIn Sucessfull')

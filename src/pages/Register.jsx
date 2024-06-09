@@ -39,7 +39,7 @@ const Register = () => {
                 console.error('Error creating user in the database:', error);
             }
             reset();
-            // navigate('/');
+            navigate('/');
         } catch (error) {
             console.log(error);
             toast.error('Registration failed');
