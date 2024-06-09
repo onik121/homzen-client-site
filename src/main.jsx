@@ -31,6 +31,7 @@ import EditAddedProperty from './components/EditAddedProperty';
 import Error from './pages/Error';
 import { propertyLoader } from './loader/propertyLoader';
 import ManageReviews from './dashboardpages/Admin/ManageReviews';
+import ManageUsers from './dashboardpages/Admin/ManageUsers';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -91,8 +92,12 @@ const router = createBrowserRouter([
         element: <AdminProfile></AdminProfile>
       },
       {
+        path: 'manageusers',
+        element: <ManageUsers></ManageUsers>
+      },
+      {
         path: 'managereviews',
-        element: <ManageReviews></ManageReviews>
+        element: <ManageReviews></ManageReviews>,
       },
       // agent routes
       {

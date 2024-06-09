@@ -227,7 +227,6 @@
 
 
 /* dashboard */
-
 .open-close {
     border-radius: 50%;
     width: 40px;
@@ -330,6 +329,25 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-default-outline:fo
 .accept {
     background-color: green;
     color: white !important;
+}
+.role-button{
+    border-radius: 5px;
+    padding: 3px 7px;
+}
+
+.admin {
+    background-color: green;
+    color: white !important;
+}
+
+.agent{
+    background-color: yellow;
+    color: black;
+}
+
+.fraud {
+    background-color: red;
+    color: white;
 }
 
 
