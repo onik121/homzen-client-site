@@ -102,7 +102,7 @@ const PropertyBought = () => {
                                     <Table.Cell className="bg-red- max-w-[0px]">
                                         <div className="bg-blue- w-fit mx-auto space-y-4">
                                             {item.status == 'accept' && <button className="flex items-center gap-2" disabled={item.status === 'pending'}><img src={editIcon}></img>Pay</button>}
-                                            <button className="flex items-center gap-2" onClick={() => handleDelete(item._id)}><img src={deleteIcon}></img>Delete</button>
+                                            {item.status !== 'accept' && <button className="flex items-center gap-2" onClick={() => handleDelete(item._id)}><img src={deleteIcon}></img>Delete</button>}
                                         </div>
                                     </Table.Cell>
                                 </Table.Row>

@@ -1,4 +1,3 @@
-// routes.js
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -32,6 +31,7 @@ import Error from './pages/Error';
 import { propertyLoader } from './loader/propertyLoader';
 import ManageReviews from './dashboardpages/Admin/ManageReviews';
 import ManageUsers from './dashboardpages/Admin/ManageUsers';
+import ManageProperties from './dashboardpages/Admin/ManageProperties';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -90,6 +90,10 @@ const router = createBrowserRouter([
       {
         path: 'adminProfile',
         element: <AdminProfile></AdminProfile>
+      },
+      {
+        path: 'manageproperties',
+        element: <ManageProperties></ManageProperties>
       },
       {
         path: 'manageusers',

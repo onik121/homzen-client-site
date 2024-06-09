@@ -74,8 +74,10 @@ const AddedPropertiesCard = ({ item, refetch }) => {
                 </div>
                 <div className="line"></div>
                 <div className="px-3 py-4 flex justify-between">
-                    <Link to={`edit/${_id}`}><img src={editIcon} alt="Delete" /></Link>
-                    <button onClick={() => handleDelete(_id)}><img src={del} alt="Delete" /></button>
+                    {
+                        verification_status !== 'reject' && <Link to={`edit/${_id}`}><img src={editIcon} /></Link>
+                    }
+                    <button onClick={() => handleDelete(_id)}><img src={del}/></button>
                 </div>
             </div>
         </div>

@@ -46,6 +46,7 @@ const AddProperty = () => {
                     description: data.description,
                     agent_email: user.email,
                     property_image: res.data.data.display_url,
+                    created_at: new Date(),
                 }
                 try {
                     const response = await axiosSecure.post('/properties', propertyItem)
@@ -86,7 +87,7 @@ const AddProperty = () => {
                         </div>
                         <div className='w-full'>
                             <label className="block">Property Price</label>
-                            <input {...register("price", { required: true })} type="number" />
+                            <input {...register("price", { required: true })} type="number" placeholder='Per SqFt Price'/>
                             {errors.price && <span className='text-red-600'>Property Price is required</span>}
                         </div>
                     </div>

@@ -69,9 +69,9 @@ const ManageUsers = () => {
     }
 
     return (
-        <div className="min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 pt-20 mb-5">
-            <h1 className='text-3xl font-medium text-black mb-6'>My Properties</h1>
-            <div className="">
+        <div className="overflow-x-auto border-2 p-8">
+            <h1 className='text-3xl font-medium text-black mb-6'>Manage All Users</h1>
+            <div className="min-w-[1200px]">
                 <Table className="border-2">
                     <Table.Head >
                         <Table.HeadCell className="max-w-[80px]">Name</Table.HeadCell>

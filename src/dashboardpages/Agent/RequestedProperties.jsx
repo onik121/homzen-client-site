@@ -18,10 +18,11 @@ const RequestedProperties = () => {
         }
     });
 
-    const handleButtonClick = async (action, id) => {
+    const handleButtonClick = async (action, id, propertyId) => {
         const updateData = {
             action,
-            id
+            id,
+            propertyId,
         };
         try {
             const { data } = await axiosSecure.patch(`/offer/status/${id}`, updateData);
@@ -83,18 +84,19 @@ const RequestedProperties = () => {
                                         <div className="w-fit mx-auto gap-3">
                                             <p>Email: {item.buyerEmail}</p>
                                             <p>Name: {item.buyerName}</p>
+                                            <p>{item.propertyId}</p>
                                         </div>
                                     </Table.Cell>
                                     <Table.Cell className="border-right text-center max-w-[0px]"><p>${item.buyerBidAmount}</p></Table.Cell>
-                                    <Table.Cell className="text-center max-w-[0px]">
+                                    <Table.Cell className="text-center max-w-[0px] border-right">
                                         <div className={`w-fit mx-auto capitalize rounded px-2 py-[2px] ${getStatusClass(item.status)}`}>
                                             {item.status}
                                         </div>
                                     </Table.Cell>
                                     {item.status === 'pending' && (
                                         <Table.Cell className="max-w-[0px] space-y-5">
-                                            <div className="bg-green-600 w-fit text-white mx-auto capitalize rounded px-2 py-[2px]"><button onClick={() => handleButtonClick('accept', item._id)}>Accept</button></div>
-                                            <div className="bg-red-600 w-fit text-white mx-auto capitalize rounded px-2 py-[2px]"> <button onClick={() => handleButtonClick('reject', item._id)}>Reject</button></div>
+                                            <div className="bg-green-600 w-fit text-white mx-auto capitalize rounded px-2 py-[2px]"><button onClick={() => handleButtonClick('accept', item._id, item.propertyId)}>Accept</button></div>
+                                            <div className="bg-red-600 w-fit text-white mx-auto capitalize rounded px-2 py-[2px]"> <button onClick={() => handleButtonClick('reject', item._id, item.propertyId)}>Reject</button></div>
                                         </Table.Cell>
                                     )}
                                 </Table.Row>

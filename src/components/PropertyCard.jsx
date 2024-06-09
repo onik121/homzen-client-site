@@ -9,7 +9,7 @@ const PropertyCard = ({ item }) => {
         <NavLink to={`/details/${_id}`}>
             <div>
                 <div className="relative">
-                    <img src={property_image}></img>
+                    <img className='max-h-[300px] min-h-[300px] w-full' src={property_image}></img>
                     <p className="absolute top-3 status left-3 uppercase px-2 py-1 text-sm font-medium">for {property_status}</p>
                 </div>
                 <div className="border-1">

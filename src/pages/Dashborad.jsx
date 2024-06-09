@@ -20,7 +20,7 @@ const Dashboard = () => {
     const renderMenuItems = (role) => {
         const adminItems = [
             { to: '/dashboard/adminProfile', icon: profileIcon, label: 'Profile' },
-            { to: '/', icon: houseIcon, label: 'Manage Properties' },
+            { to: '/dashboard/manageproperties', icon: houseIcon, label: 'Manage Properties' },
             { to: '/dashboard/manageusers', icon: usersIcon, label: 'Manage Users' },
             { to: '/dashboard/managereviews', icon: reviewIcon, label: 'Manage Reviews' },
             { to: '/', icon: backIcon, label: 'Go Back' },
