@@ -72,7 +72,7 @@ const SocialLogin = () => {
     return (
         <div className='social flex justify-between gap-5'>
             <button onClick={hanldeGoogle}><img src={google}></img> Google</button>
-            <button onClick={hanldeFacebook}><img src={facebook}></img>Facebook</button>
+            {/* <button onClick={hanldeFacebook}><img src={facebook}></img>Facebook</button> */}
         </div>
     );
 };

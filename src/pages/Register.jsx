@@ -20,12 +20,12 @@ const Register = () => {
     const onSubmit = async (data) => {
         try {
             await createUsers(data.email, data.password)
-            .then(result => {
-                console.log(result.user)
-            })
+                .then(result => {
+                    console.log(result.user)
+                })
             toast.success('Register Successful');
             await updateUserProfile(data.name, data.photo);
-            setUser({ ...user, photoURL: data.photo, displayName: data.name, email:data.email, });
+            setUser({ ...user, photoURL: data.photo, displayName: data.name, email: data.email, });
             // create user entry into the database
             const userInfo = {
                 name: data.name,
@@ -75,9 +75,19 @@ const Register = () => {
                                         {errors.photo && <span className='text-red-600'>Photo Url is required</span>}
                                     </div>
                                     <div>
-                                        <label>Password</label>
-                                        <input type="password" name="password" {...register("password", { required: true })} />
-                                        {errors.password && <span className='text-red-600'>Password is required</span>}
+                                        <label className='block'>Password</label>
+                                        <input type="password" name="password" {...register("password", {
+                                            required: true,
+                                            maxLength: 10,
+                                            minLength: 6,
+                                            pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,10}$/
+                                        })} />
+                                        {errors.password?.type === "required" && (<p className='text-red-600'>Password is required</p>)}
+                                        {errors.password?.type === "minLength" && (<p className='text-red-600'>Minimum 6 charecters</p>)}
+                                        {errors.password?.type === "maxLength" && (<p className='text-red-600'>Maximum 10 charecters</p>)}
+                                        {errors.password?.type === "pattern" && (
+                                            <p className='text-red-600'>Password must include uppercase, lowercase, number, and special character</p>
+                                        )}
                                     </div>
                                     <button className='button w-full'>Sign Up</button>
                                 </form>
