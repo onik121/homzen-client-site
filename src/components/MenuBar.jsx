@@ -53,10 +53,10 @@ const MenuBar = () => {
                 <NavLink to={'/'}>Home</NavLink>
                 <NavLink to={'/allproperties'}>All Properties</NavLink>
                 {
-                    user && userRole === 'admin' && <NavLink to={'/dashboard/adminProfile'}>Admin</NavLink>
+                    user && userRole === 'admin' && <NavLink to={'/dashboard/adminProfile'}>Dashboard</NavLink>
                 }
                 {
-                    user && userRole === 'agent' && <NavLink to={'/dashboard/agentProfile'}>Agent</NavLink>
+                    user && userRole === 'agent' && <NavLink to={'/dashboard/agentProfile'}>Dashboard</NavLink>
                 }
             </NavbarCollapse>
         </Navbar>

@@ -34,10 +34,9 @@ const FooterBottom = () => {
                         <Link className="block">hasanjahid557788@gmail.com</Link>
                     </div>
                 </div>
-                {/* <FooterDivider /> */}
                 <div className="footer-divider my-8"></div>
                 <div className="w-full sm:flex sm:items-center sm:justify-between pb-5 max-w-[1440px] mx-auto px-4">
-                    <FooterCopyright href="#" by="Flowbite™" year={2022} />
+                    <FooterCopyright href="#" by="Homzen™" year={2024} />
                     <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
                         <FooterIcon href="#" icon={BsFacebook} />
                         <FooterIcon href="#" icon={BsInstagram} />

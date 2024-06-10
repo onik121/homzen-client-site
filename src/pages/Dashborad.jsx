@@ -6,6 +6,10 @@ import reviewIcon from '../assets/icons/rating.png';
 import usersIcon from '../assets/icons/group.png';
 import backIcon from '../assets/icons/return.png';
 import houseIcon from '../assets/icons/house.png';
+import addProperty from '../assets/icons/addhouse.png'
+import soldProperty from '../assets/icons/sold.png'
+import requested from '../assets/icons/request.png'
+import addedProperty from '../assets/icons/property.png'
 import useRole from "../hooks/useRole";
 import logo from '../assets/logo2.png';
 import Skeleton from 'react-loading-skeleton';
@@ -28,10 +32,10 @@ const Dashboard = () => {
 
         const agentItems = [
             { to: '/dashboard/agentProfile', icon: profileIcon, label: 'Agent Profile' },
-            { to: '/dashboard/addproperty', icon: houseIcon, label: 'Add Property' },
-            { to: '/dashboard/addedproperties', icon: usersIcon, label: 'Added Properties' },
-            { to: '/dashboard/soldproperties', icon: reviewIcon, label: 'Sold Properties' },
-            { to: '/dashboard/requestedproperties', icon: usersIcon, label: 'Requested Properties' },
+            { to: '/dashboard/addproperty', icon: addProperty, label: 'Add Property' },
+            { to: '/dashboard/addedproperties', icon: addedProperty, label: 'Added Properties' },
+            { to: '/dashboard/soldproperties', icon: soldProperty, label: 'Sold Properties' },
+            { to: '/dashboard/requestedproperties', icon: requested, label: 'Requested Properties' },
             { to: '/', icon: backIcon, label: 'Go Back' },
         ];
 
