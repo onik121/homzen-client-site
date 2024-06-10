@@ -22,8 +22,9 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
             .catch(error => {
-                console.log(error)
-                form.reset();
+                // console.log(error.code)
+                toast.error('Incorrect email or password.')
+                reset();
             })
     }
 
