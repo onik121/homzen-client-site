@@ -1,8 +1,16 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+* Website Name: Homzen
+* Live Url: https://jobguru.netlify.app/
+* Assignment_ID: assignment_category_0003
 
-Currently, two official plugins are available:
+# Features of my website
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* The website is fully responisve
+* On this website Login/Registration functionality available
+* High-Quality Photos
+* Visitors will easily know about our company activities
+* Users have to login or register first to see jobs details.
+* google login
+* User will be able post any job opportunity
+* Any one can aply for jobs
