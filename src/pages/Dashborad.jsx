@@ -14,6 +14,7 @@ import useRole from "../hooks/useRole";
 import logo from '../assets/logo2.png';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { Helmet } from "react-helmet";
 
 const Dashboard = () => {
     const [open, setOpen] = useState(true);
@@ -55,6 +56,9 @@ const Dashboard = () => {
 
     return (
         <div className="flex h-full relative ">
+            <Helmet>
+                <title>Homzen | Dashboard </title>
+            </Helmet>
             <div className={`${open ? "w-72" : "w-24"} relative duration-300 py-8 min-h-screen z-50 bg-[#f2f2f2]`}>
                 <div className={`${open ? "w-72" : "w-24"} fixed duration-300 px-5 `}>
                     <img

@@ -21,6 +21,7 @@ import 'swiper/css/scrollbar';
 import { Modal } from "flowbite-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Helmet } from 'react-helmet';
 
 const Details = () => {
 
@@ -78,6 +79,9 @@ const Details = () => {
 
     return (
         <div className="min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 pt-32 pb-[72px]">
+            <Helmet>
+                <title>Homzen | Details</title>
+            </Helmet>
             <div className="details-box">
                 <div className="flex items-center mb-4 relative">
                     <img className="w-full h-full rounded-md max-w-[690px]" src={property_image}></img>

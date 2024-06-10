@@ -4,6 +4,7 @@ import SocialLogin from '../components/SocialLogin';
 import { useForm } from 'react-hook-form';
 import useAuth from '../hooks/useAuth';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
 
@@ -27,6 +28,9 @@ const Login = () => {
 
     return (
         <div className='min-h-screen max-w-[1440px] mx-auto px-4 flex items-center'>
+            <Helmet>
+                <title>Homzen | Login</title>
+            </Helmet>
             <div className='w-full box-shadow rounded-lg register h-auto'>
                 <div className='form-box flex items-center py-8'>
                     <div className='w-full'>

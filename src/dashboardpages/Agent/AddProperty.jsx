@@ -4,7 +4,7 @@ import useAuth from './../../hooks/useAuth';
 import useAxiosSecure from './../../hooks/useAxiosSecure';
 import { toast } from 'react-toastify';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
-
+import { Helmet } from 'react-helmet';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
@@ -71,6 +71,9 @@ const AddProperty = () => {
 
     return (
         <div className='overflow-x-auto border-2 p-10 max-w-[1200px] mx-auto'>
+            <Helmet>
+                <title>Add A Property</title>
+            </Helmet>
             <h1 className='text-3xl font-medium text-black mb-6'>Add Your Property</h1>
             <div className="p-5 border-2 min-w-[900px]">
                 <form onSubmit={handleSubmit(onSubmit)} className="add-property space-y-7">

@@ -4,6 +4,7 @@ import locationIcon from '../../assets/icons/location.png'
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const ManageProperties = () => {
 
@@ -69,6 +70,9 @@ const ManageProperties = () => {
 
     return (
         <div className="overflow-x-auto border-2 p-8">
+            <Helmet>
+                <title>Manage Properties</title>
+            </Helmet>
             <h1 className='text-3xl font-medium text-black mb-6'>Manage All Properties</h1>
             <div className="rounded-md border-2 mx-auto min-w-[1200px]">
                 <Table>

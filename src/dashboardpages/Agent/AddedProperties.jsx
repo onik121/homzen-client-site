@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import useAuth from './../../hooks/useAuth';
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import AddedPropertiesCard from "../../components/AddedPropertiesCard";
+import { Helmet } from 'react-helmet';
 
 const AddedProperties = () => {
     const { user, loading } = useAuth();
@@ -20,6 +21,9 @@ const AddedProperties = () => {
 
     return (
         <div className='overflow-x-auto border-2 p-10'>
+            <Helmet>
+                <title>Added Properties</title>
+            </Helmet>
             <h1 className='text-3xl font-medium text-black mb-6'>My Added Properties</h1>
             {isPending && 'Loading...'}
             {!isPending && !isError && (

@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import useAxiosPublic from '../hooks/useAxiosPublic';
+import { Helmet } from 'react-helmet';
 
 
 const Register = () => {
@@ -48,6 +49,9 @@ const Register = () => {
 
     return (
         <div className='min-h-screen max-w-[1440px] mx-auto px-4 flex items-center'>
+            <Helmet>
+                <title>Homzen | Register</title>
+            </Helmet>
             <div className='w-full box-shadow rounded-lg register h-auto'>
                 <div className='flex items-center justify-center'>
                     <img src={img}></img>

@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import deleteIcon from '../../assets/icons/delete.png'
 import Swal from "sweetalert2";
+import { Helmet } from 'react-helmet';
 
 
 const ManageReviews = () => {
@@ -42,6 +43,9 @@ const ManageReviews = () => {
 
     return (
         <div className='overflow-x-auto border-2 p-8'>
+            <Helmet>
+                <title>Manage Reviews</title>
+            </Helmet>
             <h1 className='text-3xl font-medium text-black mb-6'>Manage All Users Reviews</h1>
             <div className='grid grid-cols-3 gap-6 min-w-[1200px]'>
                 {

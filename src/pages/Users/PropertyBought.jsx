@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from 'react-helmet';
 
 const PropertyBought = () => {
 
@@ -62,6 +63,9 @@ const PropertyBought = () => {
 
     return (
         <div className="min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 pt-20 pb-12">
+            <Helmet>
+                <title>Homzen | My Request</title>
+            </Helmet>
             <h1 className='text-3xl font-medium text-black mb-6'>My Requested Properties</h1>
             <div className="">
                 <Table className="border-2">

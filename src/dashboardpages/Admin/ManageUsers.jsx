@@ -3,6 +3,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Table } from "flowbite-react";
 import deleteIcon from '../../assets/icons/delete.png'
 import Swal from "sweetalert2";
+import { Helmet } from 'react-helmet';
 
 const ManageUsers = () => {
 
@@ -70,6 +71,9 @@ const ManageUsers = () => {
 
     return (
         <div className="overflow-x-auto border-2 p-8">
+            <Helmet>
+                <title>Manage Users</title>
+            </Helmet>
             <h1 className='text-3xl font-medium text-black mb-6'>Manage All Users</h1>
             <div className="min-w-[1200px]">
                 <Table className="border-2">

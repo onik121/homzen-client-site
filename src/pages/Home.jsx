@@ -3,12 +3,15 @@ import Hero from "../components/Hero";
 import OurAgents from "../components/OurAgents";
 import WhatWeDo from "../components/WhatWeDo";
 import Review from "./Review";
-
+import {Helmet} from "react-helmet";
 
 
 const Home = () => {
     return (
         <div>
+            <Helmet>
+                <title>Homzen</title>
+            </Helmet>
             <Hero></Hero>
             <WhatWeDo></WhatWeDo>
             <div className="max-w-[1440px] mx-auto px-4 py-24">

@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Table } from "flowbite-react";
 import locationIcon from '../../assets/icons/location.png'
+import { Helmet } from 'react-helmet';
 
 const SoldProperties = () => {
 
@@ -20,6 +21,9 @@ const SoldProperties = () => {
 
     return (
         <div className="overflow-x-auto border-2 p-10">
+            <Helmet>
+                <title>Sold Properties</title>
+            </Helmet>
             <h1 className='text-3xl font-medium text-black mb-6'>Sold Properties</h1>
             {isPending && 'Loading...'}
             {!isPending && <div className="rounded-md border-2 mx-auto min-w-[1200px]">
