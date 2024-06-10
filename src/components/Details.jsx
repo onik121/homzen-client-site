@@ -34,7 +34,7 @@ const Details = () => {
         const wishListData = {
             propertyId: _id, email: user?.email, property_image, property_title,
             property_location, agent_name, agent_image, price, verification_status,
-            description, property_status, agent_email,
+            description, property_status, agent_email, created_at: new Date(),
         }
         try {
             const { data } = await axiosSecure.post('/wishlist', wishListData)
@@ -80,8 +80,8 @@ const Details = () => {
         <div className="min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 pt-32 pb-[72px]">
             <div className="details-box">
                 <div className="flex items-center mb-4 relative">
-                    <img className="w-full rounded-md relative max-w-[690px]" src={property_image}></img>
-                    <button onClick={handleWishList} className="whish-list absolute left-3 top-5" title="Add to wishlist"><img className="w-[25px]" src={love}></img></button>
+                    <img className="w-full h-full rounded-md max-w-[690px]" src={property_image}></img>
+                    <button onClick={handleWishList} className="whish-list absolute top-3 left-3" title="Add to wishlist"><img className="w-[25px]" src={love}></img></button>
                 </div>
                 <div className="">
                     <p className="property_status">for {property_status}</p>

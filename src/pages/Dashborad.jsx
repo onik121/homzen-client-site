@@ -30,8 +30,8 @@ const Dashboard = () => {
             { to: '/dashboard/agentProfile', icon: profileIcon, label: 'Agent Profile' },
             { to: '/dashboard/addproperty', icon: houseIcon, label: 'Add Property' },
             { to: '/dashboard/addedproperties', icon: usersIcon, label: 'Added Properties' },
-            { to: '/', icon: reviewIcon, label: 'Sold Properties' },
-            { to: '/dashboard/requestedproperties', icon: usersIcon, label: 'Offred Properties' },
+            { to: '/dashboard/soldproperties', icon: reviewIcon, label: 'Sold Properties' },
+            { to: '/dashboard/requestedproperties', icon: usersIcon, label: 'Requested Properties' },
             { to: '/', icon: backIcon, label: 'Go Back' },
         ];
 
@@ -52,7 +52,7 @@ const Dashboard = () => {
     return (
         <div className="flex h-full relative ">
             <div className={`${open ? "w-72" : "w-24"} relative duration-300 py-8 min-h-screen z-50 bg-[#f2f2f2]`}>
-                <div className={`${open ? "w-72" : "w-24"} fixed duration-300 px-5 relative`}>
+                <div className={`${open ? "w-72" : "w-24"} fixed duration-300 px-5 `}>
                     <img
                         src={closeIcon}
                         alt="Toggle sidebar"

@@ -106,7 +106,7 @@ const AddProperty = () => {
                             <label className="block">Property Status</label>
                             <select defaultValue="" {...register("status", { required: true })}>
                                 <option value="" disabled>Select a Category</option>
-                                <option value="sell">Sell</option>
+                                <option value="sale">Sale</option>
                                 <option value="rent">Rent</option>
                             </select>
                             {errors.status && <span className='text-red-600'>Category is required</span>}

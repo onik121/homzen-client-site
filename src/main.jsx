@@ -32,6 +32,9 @@ import { propertyLoader } from './loader/propertyLoader';
 import ManageReviews from './dashboardpages/Admin/ManageReviews';
 import ManageUsers from './dashboardpages/Admin/ManageUsers';
 import ManageProperties from './dashboardpages/Admin/ManageProperties';
+import SoldProperties from './dashboardpages/Agent/SoldProperties';
+import Payment from './pages/Users/Payment';
+import MyProperties from './pages/Users/MyProperties';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -68,8 +71,12 @@ const router = createBrowserRouter([
         element: <PrivateRoute><WishList></WishList></PrivateRoute>
       },
       {
-        path: '/myProperty',
+        path: '/requestedproperty',
         element: <PrivateRoute><PropertyBought></PropertyBought></PrivateRoute>
+      },
+      {
+        path: '/myproperties',
+        element: <PrivateRoute><MyProperties></MyProperties></PrivateRoute>
       },
       {
         path: '/myReviews',
@@ -78,8 +85,12 @@ const router = createBrowserRouter([
       {
         path: '/offer/id/:id',
         element: <PrivateRoute><Offer></Offer></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/wishlist/id/${params.id}`)
+        loader: ({ params }) => fetch(`https://assignment-12-server-gray-one.vercel.app/wishlist/id/${params.id}`)
       },
+      {
+        path: '/payment/:id',
+        element: <PrivateRoute><Payment></Payment></PrivateRoute>
+      }
     ]
   },
   {
@@ -109,10 +120,6 @@ const router = createBrowserRouter([
         element: <AgentProfile></AgentProfile>
       },
       {
-        path: 'requestedproperties',
-        element: <RequestedProperties></RequestedProperties>
-      },
-      {
         path: 'addproperty',
         element: <AddProperty></AddProperty>
       },
@@ -121,9 +128,17 @@ const router = createBrowserRouter([
         element: <AddedProperties></AddedProperties>
       },
       {
+        path: 'soldproperties',
+        element: <SoldProperties></SoldProperties>
+      },
+      {
+        path: 'requestedproperties',
+        element: <RequestedProperties></RequestedProperties>
+      },
+      {
         path: '/dashboard/addedproperties/edit/:id',
         element: <EditAddedProperty></EditAddedProperty>,
-        loader: ({ params }) => fetch(`http://localhost:5000/properties/${params.id}`)
+        loader: ({ params }) => fetch(`https://assignment-12-server-gray-one.vercel.app/properties/${params.id}`)
       }
     ]
   }

@@ -1,8 +1,8 @@
 export const propertyLoader = async ({ params }) => {
     try {
         const [propertyResponse, otherDataResponse] = await Promise.all([
-            fetch(`http://localhost:5000/properties/${params.id}`),
-            fetch(`http://localhost:5000/reviews/${params.id}`)
+            fetch(`https://assignment-12-server-gray-one.vercel.app/properties/${params.id}`),
+            fetch(`https://assignment-12-server-gray-one.vercel.app/reviews/${params.id}`)
         ]);
 
         const property = propertyResponse.ok ? await propertyResponse.json() : null;

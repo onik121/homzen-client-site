@@ -78,9 +78,6 @@ const ManageProperties = () => {
                         <Table.HeadCell className="max-w-[60px] text-center">Price</Table.HeadCell>
                         <Table.HeadCell className="max-w-[80px] text-center">Status</Table.HeadCell>
                         <Table.HeadCell className="max-w-[80px] text-center">Action</Table.HeadCell>
-                        {/* {hasPendingItems && (
-                            <Table.HeadCell className="max-w-[80px] text-center">Action</Table.HeadCell>
-                        )} */}
                     </Table.Head>
                     <Table.Body className="divide-y">
                         {
@@ -99,10 +96,15 @@ const ManageProperties = () => {
                                             </div>
                                         </div>
                                     </Table.Cell>
-                                    <Table.Cell className="border-right max-w-[0px]">
-                                        <div className="w-fit mx-auto gap-3">
-                                            <p>Email: {item.buyerEmail}</p>
-                                            <p>Name: {item.buyerName}</p>
+                                    <Table.Cell className="border-right max-w-[110px]">
+                                        <div className="w-fit mx-auto gap-3 flex items-center">
+                                            <div>
+                                                <img className='rounded-full w-[40px]' src={item.agent_image}></img>
+                                            </div>
+                                            <div>
+                                                <p>Email: {item.agent_email}</p>
+                                                <p>Name: {item.agent_name}</p>
+                                            </div>
                                         </div>
                                     </Table.Cell>
                                     <Table.Cell className="border-right text-center max-w-[0px]"><p>${item.price}</p></Table.Cell>

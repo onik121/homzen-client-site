@@ -38,7 +38,8 @@ const MenuBar = () => {
                             {
                                 user && userRole === 'none' && <>
                                     <DropdownItem href="/wishlist">Wishlist</DropdownItem>
-                                    <DropdownItem href="/myProperty">My Properties</DropdownItem>
+                                    <DropdownItem href="/requestedproperty">Request Properties</DropdownItem>
+                                    <DropdownItem href="/myproperties">My Properties</DropdownItem>
                                     <DropdownItem href="/myReviews">My Reviews</DropdownItem>
                                 </>
                             }

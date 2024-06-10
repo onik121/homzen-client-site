@@ -84,7 +84,6 @@ const RequestedProperties = () => {
                                         <div className="w-fit mx-auto gap-3">
                                             <p>Email: {item.buyerEmail}</p>
                                             <p>Name: {item.buyerName}</p>
-                                            <p>{item.propertyId}</p>
                                         </div>
                                     </Table.Cell>
                                     <Table.Cell className="border-right text-center max-w-[0px]"><p>${item.buyerBidAmount}</p></Table.Cell>
