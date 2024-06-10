@@ -2,7 +2,9 @@
 
 * Website Name: Homzen
 * Live Url: https://jobguru.netlify.app/
-* Assignment_ID: assignment_category_0003
+* Assignment_ID: Assignment12_category_0011
+* Admin email: jahidulislam147@gmail.com
+* Admin password: Jahid@1290
 
 # Features of my website
 
