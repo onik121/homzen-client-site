@@ -67,9 +67,10 @@ const AddedPropertiesCard = ({ item, refetch }) => {
                         <img className="w-9 h-9 rounded-full" src={agent_image} alt="Agent" />
                         <p>{agent_name}</p>
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex items-center gap-[2px]">
                         <p className="text-xl font-medium">${price}</p>
-                        <p>{property_status === 'rent' ? '/month' : '/SqFT'}</p>
+                        <p>/</p> 
+                        <p className='mt-[2px] text-sm'>{property_status === 'rent' ? 'month' : 'SqFT'}</p>
                     </div>
                 </div>
                 <div className="line"></div>

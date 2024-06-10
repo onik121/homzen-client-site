@@ -96,14 +96,6 @@ const CheckOutForm = ({ id }) => {
                 card.clear();
                 refetch();
                 navigate('/myproperties')
-
-                // now update the status
-                const stausData = {
-                    status: 'bought',
-                    propertyId: id.id,
-                }
-                await axiosSecure.patch(`/offer/payment-status/${id.id}`, stausData)
-
                 // now save the payment in the database
                 const paymentData = {
                     property_image: propertyBought.property_image,
@@ -117,6 +109,7 @@ const CheckOutForm = ({ id }) => {
                     propertyId: propertyBought.propertyId,
                     agent_name: propertyBought.agent_name,
                     agent_email: propertyBought.agent_email,
+                    agent_image: propertyBought.agent_image,
                     status: 'sold',
                 }
                 const { data } = await axiosSecure.post('/sold-property', paymentData)

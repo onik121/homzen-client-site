@@ -9,7 +9,7 @@ const RequestedProperties = () => {
     const { user, loading } = useAuth();
     const axiosSecure = useAxiosSecure();
 
-    const { data: requested = [], refetch } = useQuery({
+    const { data: requested = [], refetch, isPending } = useQuery({
         queryKey: ['requested'],
         enabled: !loading,
         queryFn: async () => {
@@ -25,9 +25,8 @@ const RequestedProperties = () => {
             propertyId,
         };
         try {
-            const { data } = await axiosSecure.patch(`/offer/status/${id}`, updateData);
+            await axiosSecure.patch(`/offer/status/${id}`, updateData);
             refetch();
-            console.log(data);
         } catch (err) {
             console.log(err);
             toast.error('Operation failed');
@@ -52,7 +51,8 @@ const RequestedProperties = () => {
     return (
         <div className="overflow-x-auto border-2 p-10">
             <h1 className='text-3xl font-medium text-black mb-6'>Requested Properties</h1>
-            <div className="rounded-md border-2 mx-auto min-w-[1200px]">
+            {isPending && 'Loading...'}
+            {!isPending && <div className="rounded-md border-2 mx-auto min-w-[1200px]">
                 <Table>
                     <Table.Head>
                         <Table.HeadCell>Property Details</Table.HeadCell>
@@ -103,7 +103,7 @@ const RequestedProperties = () => {
                         }
                     </Table.Body>
                 </Table>
-            </div>
+            </div>}
         </div>
     );
 };
