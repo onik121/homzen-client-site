@@ -10,6 +10,7 @@ const MenuBar = () => {
 
     const { user, logOut, loading } = useAuth();
     const [userRole] = useRole();
+    console.log(userRole)
     const handleLogout = () => {
         logOut()
             .then(() => {
