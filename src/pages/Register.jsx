@@ -8,6 +8,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import useAxiosPublic from '../hooks/useAxiosPublic';
 import { Helmet } from 'react-helmet';
+import { Scroll } from '../components/Scroll';
 
 
 const Register = () => {
@@ -49,6 +50,7 @@ const Register = () => {
 
     return (
         <div className='min-h-screen max-w-[1440px] mx-auto px-4 flex items-center'>
+            <Scroll></Scroll>
             <Helmet>
                 <title>Homzen | Register</title>
             </Helmet>

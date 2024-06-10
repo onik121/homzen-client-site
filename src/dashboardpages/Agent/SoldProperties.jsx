@@ -4,6 +4,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Table } from "flowbite-react";
 import locationIcon from '../../assets/icons/location.png'
 import { Helmet } from 'react-helmet';
+import { Scroll } from "../../components/Scroll";
 
 const SoldProperties = () => {
 
@@ -21,6 +22,7 @@ const SoldProperties = () => {
 
     return (
         <div className="overflow-x-auto border-2 p-10">
+            <Scroll></Scroll>
             <Helmet>
                 <title>Sold Properties</title>
             </Helmet>

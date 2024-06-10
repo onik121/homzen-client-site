@@ -15,6 +15,7 @@ import logo from '../assets/logo2.png';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { Helmet } from "react-helmet";
+import { Scroll } from "../components/Scroll";
 
 const Dashboard = () => {
     const [open, setOpen] = useState(true);
@@ -56,6 +57,7 @@ const Dashboard = () => {
 
     return (
         <div className="flex h-full relative ">
+            <Scroll></Scroll>
             <Helmet>
                 <title>Homzen | Dashboard </title>
             </Helmet>

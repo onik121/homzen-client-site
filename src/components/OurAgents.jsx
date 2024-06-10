@@ -17,22 +17,22 @@ const OurAgents = () => {
                 <div className='space-y-3'>
                     <img src="https://themesflat.co/html/homzen/images/agents/agent-2.jpg" className='mx-auto rounded'></img>
                     <div className="border-2 p-4 space-y-1">
-                        <h2 className='text-2xl text-black font-medium'>Jack Halow</h2>
-                        <p>CEO & FOUNDER</p>
+                        <h2 className='text-2xl text-black font-medium'>John Smith</h2>
+                        <p>Property Manager</p>
                     </div>
                 </div>
                 <div className='space-y-3'>
                     <img src="https://themesflat.co/html/homzen/images/agents/agent-3.jpg" className='mx-auto rounded'></img>
                     <div className="border-2 p-4 space-y-1">
-                        <h2 className='text-2xl text-black font-medium'>Jack Halow</h2>
-                        <p>CEO & FOUNDER</p>
+                        <h2 className='text-2xl text-black font-medium'>Chris Patt</h2>
+                        <p>Agent</p>
                     </div>
                 </div>
                 <div className='space-y-3'>
                     <img src="https://themesflat.co/html/homzen/images/agents/agent-4.jpg" className='mx-auto rounded'></img>
                     <div className="border-2 p-4 space-y-1">
-                        <h2 className='text-2xl text-black font-medium'>Jack Halow</h2>
-                        <p>CEO & FOUNDER</p>
+                        <h2 className='text-2xl text-black font-medium'>Chris Patt</h2>
+                        <p>Real Estate Marketer</p>
                     </div>
                 </div>
             </div>

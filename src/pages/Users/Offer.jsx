@@ -3,6 +3,8 @@ import useAuth from "../../hooks/useAuth";
 import location from '../../assets/icons/location.png'
 import { toast } from 'react-toastify';
 import useAxiosSecure from './../../hooks/useAxiosSecure';
+import { Scroll } from "../../components/Scroll";
+import { Helmet } from "react-helmet";
 
 const Offer = () => {
 
@@ -46,6 +48,10 @@ const Offer = () => {
 
     return (
         <div className="min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 pt-14 flex items-center">
+            <Scroll></Scroll>
+            <Helmet>
+                <title>Homzen | Send A Proposal</title>
+            </Helmet>
             <div className="w-full">
                 <h1 className='text-3xl font-medium text-black mb-6'>Send A Proposal</h1>
                 <div className="details-box">

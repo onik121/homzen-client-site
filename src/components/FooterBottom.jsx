@@ -14,6 +14,7 @@ const FooterBottom = () => {
                             src={logo}
                             alt="Logo"
                         />
+                        <p className="max-w-[300px] mt-4">Specializes in providing high-class tours for those in need. Contact Us</p>
                     </div>
                     <div className="space-y-2">
                         <h2 className="text-2xl font-semibold text-[#3f3f3f] mb-3">Quick Link</h2>

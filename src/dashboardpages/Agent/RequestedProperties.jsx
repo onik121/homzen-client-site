@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import { Table } from "flowbite-react";
 import location from '../../assets/icons/location.png';
 import { Helmet } from "react-helmet";
+import { Scroll } from "../../components/Scroll";
 
 const RequestedProperties = () => {
 
@@ -51,6 +52,7 @@ const RequestedProperties = () => {
 
     return (
         <div className="overflow-x-auto border-2 p-10">
+            <Scroll></Scroll>
             <Helmet>
                 <title>Requested Properties</title>
             </Helmet>

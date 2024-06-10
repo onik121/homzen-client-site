@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../hooks/useAuth';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet';
+import { Scroll } from '../components/Scroll';
 
 const Login = () => {
 
@@ -28,6 +29,7 @@ const Login = () => {
 
     return (
         <div className='min-h-screen max-w-[1440px] mx-auto px-4 flex items-center'>
+            <Scroll></Scroll>
             <Helmet>
                 <title>Homzen | Login</title>
             </Helmet>

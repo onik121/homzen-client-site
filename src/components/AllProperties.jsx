@@ -3,6 +3,7 @@ import 'react-tabs/style/react-tabs.css';
 import useProperties from '../hooks/useProperties';
 import PropertyCard from './PropertyCard';
 import { Helmet } from 'react-helmet';
+import { Scroll } from './Scroll';
 
 const AllProperties = () => {
 
@@ -10,6 +11,7 @@ const AllProperties = () => {
 
     return (
         <div className='mt-7'>
+            <Scroll></Scroll>
             <Helmet>
                 <title>Homzen | All Properties </title>
             </Helmet>

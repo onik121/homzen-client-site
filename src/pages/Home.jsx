@@ -1,6 +1,7 @@
 import Advertisement from "../components/Advertisement";
 import Hero from "../components/Hero";
 import OurAgents from "../components/OurAgents";
+import { Scroll } from "../components/Scroll";
 import WhatWeDo from "../components/WhatWeDo";
 import Review from "./Review";
 import {Helmet} from "react-helmet";
@@ -9,6 +10,7 @@ import {Helmet} from "react-helmet";
 const Home = () => {
     return (
         <div>
+            <Scroll></Scroll>
             <Helmet>
                 <title>Homzen</title>
             </Helmet>

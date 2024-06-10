@@ -3,6 +3,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import CheckOutForm from './CheckOutForm';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { Scroll } from '../../components/Scroll';
 
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT);
 
@@ -12,6 +13,7 @@ const Payment = () => {
     
     return (
         <div className='min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 pt-20 pb-12 flex items-center'>
+            <Scroll></Scroll>
             <Helmet>
                 <title>Homzen | Payment</title>
             </Helmet>

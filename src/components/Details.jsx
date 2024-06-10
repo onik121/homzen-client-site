@@ -22,6 +22,7 @@ import { Modal } from "flowbite-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Helmet } from 'react-helmet';
+import { Scroll } from "./Scroll";
 
 const Details = () => {
 
@@ -79,6 +80,7 @@ const Details = () => {
 
     return (
         <div className="min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 pt-32 pb-[72px]">
+            <Scroll></Scroll>
             <Helmet>
                 <title>Homzen | Details</title>
             </Helmet>

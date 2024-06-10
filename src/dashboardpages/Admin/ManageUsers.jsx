@@ -4,6 +4,7 @@ import { Table } from "flowbite-react";
 import deleteIcon from '../../assets/icons/delete.png'
 import Swal from "sweetalert2";
 import { Helmet } from 'react-helmet';
+import { Scroll } from "../../components/Scroll";
 
 const ManageUsers = () => {
 
@@ -71,6 +72,7 @@ const ManageUsers = () => {
 
     return (
         <div className="overflow-x-auto border-2 p-8">
+            <Scroll></Scroll>
             <Helmet>
                 <title>Manage Users</title>
             </Helmet>

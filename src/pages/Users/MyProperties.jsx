@@ -4,6 +4,7 @@ import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import location from '../../assets/icons/location.png'
 import { Helmet } from 'react-helmet';
+import { Scroll } from '../../components/Scroll';
 
 const MyProperties = () => {
 
@@ -22,6 +23,7 @@ const MyProperties = () => {
 
     return (
         <div className="min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 pt-20 pb-12">
+            <Scroll></Scroll>
             <Helmet>
                 <title>Homzen | My Properties</title>
             </Helmet>

@@ -5,6 +5,7 @@ import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet';
+import { Scroll } from '../../components/Scroll';
 
 const ManageProperties = () => {
 
@@ -70,6 +71,7 @@ const ManageProperties = () => {
 
     return (
         <div className="overflow-x-auto border-2 p-8">
+            <Scroll></Scroll>
             <Helmet>
                 <title>Manage Properties</title>
             </Helmet>
