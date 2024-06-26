@@ -1,7 +1,7 @@
 # React + Vite
 
 * Website Name: Homzen
-* Live Url: https://jobguru.netlify.app/
+* Live Url: https://homzen1.netlify.app
 * Admin email: jahidulislam147@gmail.com
 * Admin password: Jahid@1290
 * Agent email: onik@gmail.com
