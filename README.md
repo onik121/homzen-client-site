@@ -8,11 +8,15 @@
 
 # Features of my website
 
-* The website is fully responisve
-* On this website Login/Registration functionality available
-* High-Quality Photos
-* Visitors will easily know about our company activities
-* Users have to login or register first to see jobs details.
-* google login
-* User will be able post any job opportunity
-* Any one can aply for jobs
+1. Account Registration: Options for users to create accounts.
+2. Favorites: Ability to save favorite properties for easy access later.
+3. User Reviews: Ratings and reviews for properties.
+4. Detailed Descriptions: In-depth property details including size, amenities, neighborhood information, etc.
+5. High-Quality Images: Galleries with high-resolution photos of properties.
+6. Property Categorization: Categorize properties by type (House, Villa, and office).
+7. Clean Layout: A well-organized layout emphasizing property listings and essential information.
+8. Agent Dashboard: Detailed profiles of real estate agents with contact information, listings, and client reviews.
+9. Admin Dashboard: Comprehensive dashboard with user activity, and property listings.
+10. Listing Approval: Admin control over approving, and rejecting, property listings submitted by agents.
+11. User Roles and Permissions: Define user roles (e.g., admin, agent, and users) with specific permissions and access levels.
+12. Payment Gateway Integration: Integration with stripe payment gateways for processing payments securely.
