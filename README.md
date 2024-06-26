@@ -4,8 +4,8 @@
 * Live Url: https://homzen1.netlify.app
 * Admin email: jahidulislam147@gmail.com
 * Admin password: Jahid@1290
-* Agent email: onik@gmail.com
-* Agent password: Onik@1290
+* Agent email: onik1256@gmail.com
+* Agent password: Jahid@1290
 
 # Features of my website
 
