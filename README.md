@@ -28,10 +28,6 @@
   <img width="15" />
   <img src="https://skillicons.dev/icons?i=tailwind" height="45" alt="tailwindcss logo"  />
   <img width="15" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg" height="45" alt="materialui logo"  />
-  <img width="15" />
-  <img src="https://cdn.simpleicons.org/bootstrap/7952B3" height="45" alt="bootstrap logo"  />
-  <img width="15" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="45" alt="javascript logo"  />
   <img width="15" />
   <img src="https://skillicons.dev/icons?i=react" height="45" alt="react logo"  />
@@ -39,8 +35,6 @@
   <img src="https://skillicons.dev/icons?i=vite" height="45" alt="vite logo"  />
   <img width="15" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" height="45" alt="firebase logo"  />
-  <img width="15" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" height="45" alt="nextjs logo"  />
   <img width="15" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" height="45" alt="nodejs logo"  />
   <img width="15" />
