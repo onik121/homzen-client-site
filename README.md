@@ -1,4 +1,4 @@
-# React + Vite
+## React + Vite
 
 * Website Name: Homzen
 * Live Url: https://homzen1.netlify.app
@@ -7,7 +7,7 @@
 * Agent email: onik1256@gmail.com
 * Agent password: Jahid@1290
 
-# Features of my website
+## Features of my website
 
 * Account Registration: Options for users to create accounts.
 * Favorites: Ability to save favorite properties for easy access later.
@@ -19,3 +19,5 @@
 * Listing Approval: Admin control over approving, and rejecting, property listings submitted by agents.
 * User Roles and Permissions: Define user roles (e.g., admin, agent, and users) with specific permissions and access levels.
 * Payment Gateway Integration: Integration with stripe payment gateways for processing payments securely.
+
+## Tc
