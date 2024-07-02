@@ -20,7 +20,7 @@
 * User Roles and Permissions: Define user roles (e.g., admin, agent, and users) with specific permissions and access levels.
 * Payment Gateway Integration: Integration with stripe payment gateways for processing payments securely.
 
-## Technologies i used on this prokject: 
+## Technologies i used on this project: 
 <div>
   <img src="https://skillicons.dev/icons?i=html" height="45" alt="html5 logo"  />
   <img width="15" />
