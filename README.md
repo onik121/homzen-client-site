@@ -22,7 +22,7 @@
 
 ## Technologies i used on this prokject: 
 
-<div align="center">
+<div>
   <img src="https://skillicons.dev/icons?i=vite" height="45" alt="vite logo"  />
   <img width="15" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" height="45" alt="firebase logo"  />
