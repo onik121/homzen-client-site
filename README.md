@@ -9,6 +9,7 @@
 
 # Features of my website
 
+* Account Registration: Options for users to create accounts.
 * Favorites: Ability to save favorite properties for easy access later.
 * User Reviews: Ratings and reviews for properties.
 * Detailed Descriptions: In-depth property details including size, amenities, neighborhood information, etc.
