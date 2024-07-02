@@ -9,13 +9,10 @@
 
 # Features of my website
 
-* Account Registration: Options for users to create accounts.
 * Favorites: Ability to save favorite properties for easy access later.
 * User Reviews: Ratings and reviews for properties.
 * Detailed Descriptions: In-depth property details including size, amenities, neighborhood information, etc.
-* High-Quality Images: Galleries with high-resolution photos of properties.
 * Property Categorization: Categorize properties by type (House, Villa, and office).
-* Clean Layout: A well-organized layout emphasizing property listings and essential information.
 * Agent Dashboard: Detailed profiles of real estate agents with contact information, listings, and client reviews.
 * Admin Dashboard: Comprehensive dashboard with user activity, and property listings.
 * Listing Approval: Admin control over approving, and rejecting, property listings submitted by agents.
