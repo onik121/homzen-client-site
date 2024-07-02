@@ -20,4 +20,20 @@
 * User Roles and Permissions: Define user roles (e.g., admin, agent, and users) with specific permissions and access levels.
 * Payment Gateway Integration: Integration with stripe payment gateways for processing payments securely.
 
-## Tc
+## Technologies i used on this prokject: 
+
+<div align="center">
+  <img src="https://skillicons.dev/icons?i=vite" height="45" alt="vite logo"  />
+  <img width="15" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" height="45" alt="firebase logo"  />
+  <img width="15" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" height="45" alt="nextjs logo"  />
+  <img width="15" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" height="45" alt="nodejs logo"  />
+  <img width="15" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" height="45" alt="express logo"  />
+  <img width="15" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" height="45" alt="mongodb logo"  />
+  <img width="15" />
+  <img src="https://skillicons.dev/icons?i=wordpress" height="45" alt="wordpress logo"  />
+</div>
