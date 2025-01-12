@@ -9,8 +9,8 @@ const WhatWeDo = () => {
                 <p className="font-medium text-[#ed2027]">OUR SERVICES</p>
                 <h1 className="text-4xl font-medium mt-2">What We Do?</h1>
             </div>
-            <div className='grid grid-cols-3 gap-10'>
-                <div className='space-y-5 text-center box-shadow p-5 rounded-md'>
+            <div className='service-boxs'>
+                <div className='space-y-5 text-center box-shadow p-4 rounded-md'>
                     <img src={buyHome} className='w-[80px] mx-auto'></img>
                     <h2 className='text-2xl text-black font-medium'>Buy A New Home</h2>
                     <p>Discover your dream home effortlessly. Explore diverse properties and expert guidance for a seamless buying experience.</p>

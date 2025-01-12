@@ -20,7 +20,8 @@
     padding: 8px 15px;
     border-radius: 5px;
 }
-.menu-item ul a.active{
+
+.menu-item ul a.active {
     background-color: #ed2027;
     color: white;
 }
@@ -79,7 +80,7 @@
     gap: 25px;
 }
 
-.Property-cart-container > div {
+.Property-cart-container>div {
     border-radius: 5px;
     overflow: hidden;
 }
@@ -89,13 +90,14 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+
 .status {
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
     border-radius: 3px;
 }
 
-.verification_status{
+.verification_status {
     background-color: #ed2027;
     color: white;
     border-radius: 4px;
@@ -105,7 +107,7 @@
     font-size: 12px;
 }
 
-.verified{
+.verified {
     background-color: green;
     color: white;
     border-radius: 4px;
@@ -113,6 +115,23 @@
     font-size: 15px;
     margin-bottom: 10px;
     font-size: 12px;
+}
+
+.service-boxs {
+    display: flex;
+    gap: 40px;
+}
+
+@media (max-width:1024px) {
+    .service-boxs {
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .service-boxs>div {
+        max-width: 400px;
+    }
 }
 
 
@@ -154,6 +173,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
 }
+
 .property_status {
     text-transform: uppercase;
     background-color: #ed2027;
@@ -164,7 +184,7 @@
     font-size: 13px;
 }
 
-.property-overview > div img {
+.property-overview>div img {
     background-color: #f7f7f7;
     padding: 15px 15px;
     border-radius: 4px;
@@ -242,11 +262,11 @@
     padding: 10px 10px;
 }
 
-.dashboard-skeleton{
+.dashboard-skeleton {
     margin: 10px 0px;
 }
 
-.dashboard-menu a.active li{
+.dashboard-menu a.active li {
     background-color: rgba(237, 32, 39, 0.1);
 }
 
@@ -274,7 +294,7 @@
 }
 
 .swal2-success-ring {
-    border: .25em solid green!important;
+    border: .25em solid green !important;
 }
 
 div:where(.swal2-icon).swal2-success [class^=swal2-success-line] {
@@ -303,14 +323,14 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-default-outline:fo
     font-weight: 500;
 }
 
-.proposal button{
+.proposal button {
     background-color: #ed2027;
     color: white;
     border-radius: 5px;
     padding: 10px 20px;
 }
 
-.drop-shadow-md{
+.drop-shadow-md {
     display: none;
 }
 
@@ -330,7 +350,8 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-default-outline:fo
     background-color: green;
     color: white !important;
 }
-.role-button{
+
+.role-button {
     border-radius: 5px;
     padding: 3px 7px;
 }
@@ -340,7 +361,7 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-default-outline:fo
     color: white !important;
 }
 
-.agent{
+.agent {
     background-color: yellow;
     color: black;
 }
@@ -352,11 +373,13 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-default-outline:fo
 
 
 /* add-property */
-.add-property label{
+.add-property label {
     margin-bottom: 10px;
     font-weight: 500;
 }
-.add-property input, textarea{
+
+.add-property input,
+textarea {
     outline: none;
     width: 100%;
     height: 47px;
@@ -375,7 +398,9 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-default-outline:fo
     border: 1px solid black;
 }
 
-input,select,textarea:focus {
+input,
+select,
+textarea:focus {
     outline: none;
     border-color: black !important;
     box-shadow: none !important;
@@ -400,4 +425,13 @@ input,select,textarea:focus {
     width: 100%;
     background-color: rgb(221, 221, 221);
     height: 1px;
+}
+
+td:first-child {
+    display: non;
+    max-width: 380px;
+}
+
+td:nth-child(2) {
+    max-width: 200px;
 }
