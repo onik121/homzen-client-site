@@ -11,7 +11,7 @@ const ManageProperties = () => {
 
 
     const axiosSecure = useAxiosSecure();
-    const { data: properties = [], refetch } = useQuery({
+    const { data: properties = [], refetch, isLoading } = useQuery({
         queryKey: ['properties'],
         queryFn: async () => {
             const { data } = await axiosSecure.get('/properties/all')
@@ -19,6 +19,13 @@ const ManageProperties = () => {
         }
     })
 
+    if (isLoading) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <p className="text-2xl font-semibold">Loading...</p>
+            </div>
+        );
+    }
 
     const handleButtonClick = async (action, id) => {
         const titleText = action === 'verified' ? `Did you want to set this property as ${action}` : `Did you want to ${action} this property`;

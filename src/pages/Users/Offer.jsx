@@ -28,7 +28,7 @@ const Offer = () => {
         const bidData = {
             buyerEmail, buyerName, buyerBidAmount, property_image,
             property_location, property_status, agent_name, status, agent_email,
-            propertyId, property_title, property_price: price, agent_image, property_status
+            propertyId, property_title, property_price: price, agent_image, property_status, created_at: new Date(),
         }
         try {
             const { data } = await axiosSecure.post('/offer', bidData)
@@ -47,7 +47,7 @@ const Offer = () => {
     }
 
     return (
-        <div className="min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 pt-14 flex items-center">
+        <div className="min-h-[calc(100vh-240px)] max-w-[1440px] mx-auto px-4 flex pt-24 pb-24 items-center">
             <Scroll></Scroll>
             <Helmet>
                 <title>Homzen | Send A Proposal</title>
@@ -68,16 +68,15 @@ const Offer = () => {
                             <p>{description}</p>
                             <div className="line my-5"></div>
                             <div className="flex justify-between items-center">
-                                <div className="space-y-3">
-                                    <p className="text-lg font-medium text-black uppercase">Seller:</p>
+                                <div className="flex items-center gap-2">
+                                    <p className="text-lg font-medium text-black capitalize">Seller:</p>
                                     <div className="flex gap-4">
                                         <div className="flex items-center gap-2"><img className="w-[35px] h-[35px] rounded-full" src={agent_image}></img><p className="font-medium">{agent_name}</p></div>
-
                                     </div>
                                 </div>
-                                <div className='space-y-3'>
-                                    <p className="text-lg font-medium text-black uppercase">Location:</p>
-                                    <div className="flex items-center gap-2"><img className='w-[20px]' src={location} /><p className="font-medium">{property_location}</p></div>
+                                <div className='flex items-center gap-2'>
+                                    <p className="text-lg font-medium text-black capitalize">Location:</p>
+                                    <div className="flex items-center gap-1 mt-[1px]"><img className='w-[20px]' src={location} /><p className="font-medium">{property_location}</p></div>
                                 </div>
                             </div>
                             <div className="line my-5"></div>

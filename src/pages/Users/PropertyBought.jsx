@@ -24,7 +24,6 @@ const PropertyBought = () => {
     })
 
     const handleDelete = (id) => {
-        console.log(id)
         Swal.fire({
             title: "Did you want to delete it?",
             text: "You won't be able to revert this!",

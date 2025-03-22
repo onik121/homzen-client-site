@@ -6,6 +6,7 @@ import location from '../../assets/icons/location.png';
 import { Helmet } from "react-helmet";
 import { Scroll } from "../../components/Scroll";
 import del from '../../assets/icons/delete.png';
+import Swal from "sweetalert2";
 
 const RequestedProperties = () => {
 
@@ -36,6 +37,30 @@ const RequestedProperties = () => {
         }
     };
 
+    const handleDelete = (id) => {
+        console.log(id)
+        Swal.fire({
+            title: "Did you want to delete it?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const { data } = await axiosSecure.delete(`/offer/id/${id}`)
+                if (data.deletedCount > 0) {
+                    Swal.fire({
+                        title: "Deleted Successfully",
+                        icon: "success"
+                    });
+                    refetch();
+                }
+            }
+        });
+    }
+
     const getStatusClass = (status) => {
         switch (status) {
             case 'pending':
@@ -44,6 +69,8 @@ const RequestedProperties = () => {
                 return 'bg-red-600 text-white';
             case 'accept':
                 return 'bg-green-500 text-white';
+            case 'deleted':
+                return 'bg-red-600 text-white';
             default:
                 return '';
         }
@@ -106,9 +133,9 @@ const RequestedProperties = () => {
                                             <div className="bg-red-600 w-fit text-white mx-auto capitalize rounded px-2 py-[2px]"> <button onClick={() => handleButtonClick('reject', item._id, item.propertyId)}>Reject</button></div>
                                         </Table.Cell>
                                     )}
-                                    {item.status === 'reject' && (
+                                    {(item.status === 'reject' || item.status === 'deleted') && (
                                         <Table.Cell className="space-y-5">
-                                            <div className="w-fit mx-auto"><button onClick={() => handleDelete(item._id)}><img src={del}/></button></div>
+                                            <div className="w-fit mx-auto"><button onClick={() => handleDelete(item._id)}><img src={del} /></button></div>
                                         </Table.Cell>
                                     )}
                                 </Table.Row>

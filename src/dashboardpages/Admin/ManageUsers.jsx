@@ -5,18 +5,41 @@ import deleteIcon from '../../assets/icons/delete.png'
 import Swal from "sweetalert2";
 import { Helmet } from 'react-helmet';
 import { Scroll } from "../../components/Scroll";
+import ReactPaginate from 'react-paginate';
+import { useState } from "react";
+
 
 const ManageUsers = () => {
 
     const axiosSecure = useAxiosSecure();
+    // pagination
+    const [page, setPage] = useState(1);
+    const limit = 10; // Change as needed
 
-    const { data: users = [], refetch } = useQuery({
-        queryKey: ['users'],
+    const { data, refetch, isLoading } = useQuery({
+        queryKey: ['users', page],
         queryFn: async () => {
-            const { data } = await axiosSecure.get('/users/admin');
+            const { data } = await axiosSecure.get(`/users/admin?page=${page}&limit=${limit}`);
             return data;
         }
-    })
+    });
+    
+    if (isLoading) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <p className="text-2xl font-semibold">Loading...</p>
+            </div>
+        );
+    }
+    
+    
+    const users = data?.users || [];
+    const pageCount = data?.totalPages || 1;
+    
+    const handlePageClick = ({ selected }) => {
+        setPage(selected + 1);
+    };
+    // pagination
 
     const handleButtonClick = async (action, id, email) => {
         Swal.fire({
@@ -101,7 +124,7 @@ const ManageUsers = () => {
                                     <Table.Cell className="border-right max-w-[0px]">
                                         <p className="w-fit mx-auto capitalize">{item.role}</p>
                                     </Table.Cell>
-                                    <Table.Cell className="border-right text-center bg-red- max-w-[0px]">
+                                    <Table.Cell className="border-right text-center max-w-[0px]">
                                         {
                                             item.role !== 'fraud' && <div className="mx-auto w-fit"><button className="role-button admin" onClick={() => handleButtonClick('admin', item._id, item.email)}>Admin</button></div>
                                         }
@@ -124,7 +147,20 @@ const ManageUsers = () => {
                         }
                     </Table.Body>
                 </Table>
-
+                <ReactPaginate
+                    breakLabel="..."
+                    nextLabel="Next"
+                    onPageChange={handlePageClick}
+                    pageRangeDisplayed={5}
+                    pageCount={pageCount}
+                    previousLabel="Previous"
+                    marginPagesDisplayed={2}
+                    containerClassName="flex justify-center items-center gap-2 mt-4"
+                    pageLinkClassName="px-4 py-2 border border-gray-300 rounded transition-all duration-300 hover:bg-red-600 hover:text-white"
+                    previousLinkClassName="px-4 py-2 border border-gray-300 rounded transition-all duration-300 hover:bg-red-600 hover:text-white"
+                    nextLinkClassName="px-4 py-2 border border-gray-300 rounded transition-all duration-300 hover:bg-red-600 hover:text-white"
+                    activeClassName="py-[7px] bg-red-600 text-white rounded"
+                />
             </div>
         </div>
     );
