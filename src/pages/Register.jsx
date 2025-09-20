@@ -4,11 +4,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from '../components/SocialLogin';
 import { useForm } from "react-hook-form"
 import { toast } from 'react-toastify';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import useAxiosPublic from '../hooks/useAxiosPublic';
 import { Helmet } from 'react-helmet';
 import { Scroll } from '../components/Scroll';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 const Register = () => {
@@ -17,6 +18,7 @@ const Register = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
+    const [show, setShow] = useState(false);
 
     const onSubmit = async (data) => {
         try {
@@ -79,14 +81,16 @@ const Register = () => {
                                         <input type="text" name="photo" {...register("photo", { required: true })} />
                                         {errors.photo && <span className='text-red-600'>Photo Url is required</span>}
                                     </div>
-                                    <div>
-                                        <label className='block'>Password</label>
-                                        <input type="password" name="password" {...register("password", {
-                                            required: true,
-                                            maxLength: 10,
-                                            minLength: 6,
-                                            pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,10}$/
-                                        })} />
+                                    <div >
+                                        <div className="flex items-center">
+                                            <input type={show ? 'test' : 'password'} name="password" {...register("password", {
+                                                required: true,
+                                                maxLength: 10,
+                                                minLength: 6,
+                                                pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,10}$/
+                                            })} />
+                                            <span onClick={() => setShow(!show)} className="cursor-pointer -ml-9 eye">{show ? <FaEye></FaEye> : <FaEyeSlash />}</span>
+                                        </div>
                                         {errors.password?.type === "required" && (<p className='text-red-600'>Password is required</p>)}
                                         {errors.password?.type === "minLength" && (<p className='text-red-600'>Minimum 6 charecters</p>)}
                                         {errors.password?.type === "maxLength" && (<p className='text-red-600'>Maximum 10 charecters</p>)}

@@ -25,7 +25,7 @@ const Dashboard = () => {
 
     const renderMenuItems = (role) => {
         const adminItems = [
-            { to: '/dashboard/adminProfile', icon: profileIcon, label: 'Profile' },
+            { to: '/dashboard/adminProfile', icon: profileIcon, label: 'Admin Profile' },
             { to: '/dashboard/manageproperties', icon: houseIcon, label: 'Manage Properties' },
             { to: '/dashboard/manageusers', icon: usersIcon, label: 'Manage Users' },
             { to: '/dashboard/managereviews', icon: reviewIcon, label: 'Manage Reviews' },
@@ -70,8 +70,10 @@ const Dashboard = () => {
                         onClick={toggleSidebar}
                     />
                     <div className="flex gap-x-3 items-center">
-                        <img className="max-w-[40px]" src={logo} alt="Logo" />
-                        <h1 className={`text-black font-medium text-2xl duration-200 ${!open && "scale-0"}`}>Homzen</h1>
+                        <a href="/" className="flex items-center gap-4">
+                            <img className="max-w-[40px]" src={logo} alt="Logo" />
+                            <h1 className={`text-black font-medium text-2xl duration-200 ${!open && "scale-0"}`}>Homzen</h1>
+                        </a>
                     </div>
                     {isAdminLoading ? (
                         <ul className="mt-8 dashboard-menu">

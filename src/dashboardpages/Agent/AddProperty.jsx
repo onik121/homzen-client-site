@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import "react-datepicker/dist/react-datepicker.css";
 import useAuth from './../../hooks/useAuth';
@@ -8,36 +9,34 @@ import { Helmet } from 'react-helmet';
 import { Scroll } from '../../components/Scroll';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddProperty = () => {
-
-    const { register, handleSubmit, reset, formState: { errors }, } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
     const axiosPublic = useAxiosPublic();
+    const [loading, setLoading] = useState(false);  // Loader state
 
     const onSubmit = async (data) => {
-        // upload the image on the imgbb and then get the url
-        const imageFile = { image: data.image[0] }
+        setLoading(true);  // Start loader
+
+        const imageFile = { image: data.image[0] };
         try {
             const res = await axiosPublic.post(image_hosting_api, imageFile, {
-                headers: {
-                    'content-type': 'multipart/form-data'
-                }
-            })
+                headers: { 'content-type': 'multipart/form-data' }
+            });
+
             if (res.data.status === 200 && res.data.success) {
-                // now send the menu item data to the server with the image url
-                const status = 'pending';
                 const propertyItem = {
                     property_title: data.title,
                     property_location: data.location,
                     price: parseFloat(data.price),
                     agent_name: user.displayName,
                     agent_image: user.photoURL,
-                    verification_status: status,
+                    verification_status: 'pending',
                     apartment_type: data.type,
-                    bedrooms: parseFloat(data.bedrooms) ,       
+                    bedrooms: parseFloat(data.bedrooms),
                     area: parseFloat(data.area),
                     washrooms: parseFloat(data.washrooms),
                     garages: parseFloat(data.garages),
@@ -48,31 +47,31 @@ const AddProperty = () => {
                     agent_email: user.email,
                     property_image: res.data.data.display_url,
                     created_at: new Date(),
-                }
+                };
+
                 try {
-                    const response = await axiosSecure.post('/properties', propertyItem)
+                    const response = await axiosSecure.post('/properties', propertyItem);
                     if (response.data.insertedId) {
                         toast.success('Added Successfully');
                         reset();
                     }
-                }
-                catch (error) {
-                    console.log(error.code)
+                } catch (error) {
                     toast.error(`Error: ${error.code}`);
                 }
+            } else {
+                toast.error('Failed to upload image');
             }
-            else {
-                toast.error('Failed to add Image');
-            }
-        }
-        catch (error) {
-            console.log(error.message)
+        } catch (error) {
+            console.log(error.message);
+            toast.error('Something went wrong');
+        } finally {
+            setLoading(false); // Stop loader
         }
     };
 
     return (
         <div className='overflow-x-auto border-2 p-10 max-w-[1200px] mx-auto'>
-            <Scroll></Scroll>
+            <Scroll />
             <Helmet>
                 <title>Add A Property</title>
             </Helmet>
@@ -92,7 +91,7 @@ const AddProperty = () => {
                         </div>
                         <div className='w-full'>
                             <label className="block">Property Price</label>
-                            <input {...register("price", { required: true })} type="number" placeholder='Per SqFt Price'/>
+                            <input {...register("price", { required: true })} type="number" placeholder='Per SqFt Price' />
                             {errors.price && <span className='text-red-600'>Property Price is required</span>}
                         </div>
                     </div>
@@ -160,7 +159,12 @@ const AddProperty = () => {
                         <textarea {...register("description", { required: true })} className='w-full'></textarea>
                         {errors.description && <span className='text-red-600'>Description is required</span>}
                     </div>
-                    <button className='submit'>Submit</button>
+                    <button
+                        className='submit flex items-center justify-center'
+                        disabled={loading}
+                    >
+                        {loading ? <span className="loader"></span> : "Submit"}
+                    </button>
                 </form>
             </div>
         </div>

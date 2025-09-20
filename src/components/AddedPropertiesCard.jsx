@@ -69,7 +69,7 @@ const AddedPropertiesCard = ({ item, refetch }) => {
                     </div>
                     <div className="flex items-center gap-[2px]">
                         <p className="text-xl font-medium">${price}</p>
-                        <p>/</p> 
+                        <p>/</p>
                         <p className='mt-[2px] text-sm'>{property_status === 'rent' ? 'month' : 'SqFT'}</p>
                     </div>
                 </div>
@@ -78,7 +78,7 @@ const AddedPropertiesCard = ({ item, refetch }) => {
                     {
                         verification_status !== 'reject' && <Link to={`edit/${_id}`}><img src={editIcon} /></Link>
                     }
-                    <button onClick={() => handleDelete(_id)}><img src={del}/></button>
+                    <button onClick={() => handleDelete(_id)}><img src={del} /></button>
                 </div>
             </div>
         </div>

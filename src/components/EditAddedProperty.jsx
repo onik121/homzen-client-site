@@ -3,18 +3,22 @@ import { useLoaderData } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
 const EditAddedProperty = () => {
+
     const item = useLoaderData();
     const { property_status, property_title, property_location, price, apartment_type, built_year, description, area, bedrooms, washrooms, garages, land_size, property_image, _id } = item;
     const axiosSecure = useAxiosSecure();
     const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, formState: { errors } } = useForm();
+     const [loading, setLoading] = useState(false);  // Loader state
 
     const onSubmit = async (data) => {
+        setLoading(true);  // Start loader
         const updateData = {
             property_title: data.title,
             property_location: data.location,
@@ -62,6 +66,9 @@ const EditAddedProperty = () => {
         } catch (error) {
             console.log(error.code);
             toast.error(`Error: ${error.code}`);
+        }
+        finally {
+            setLoading(false); // Stop loader
         }
     };
 
@@ -150,7 +157,13 @@ const EditAddedProperty = () => {
                         <textarea {...register("description", { required: true })} className='w-full' defaultValue={description}></textarea>
                         {errors.description && <span className='text-red-600'>Description is required</span>}
                     </div>
-                    <button type="submit" className='submit'>Update</button>
+                    {/* <button type="submit" className='submit'>Update</button> */}
+                    <button
+                        className='submit flex items-center justify-center'
+                        disabled={loading}
+                    >
+                        {loading ? <span className="loader"></span> : "Update"}
+                    </button>
                 </form>
             </div>
         </div>

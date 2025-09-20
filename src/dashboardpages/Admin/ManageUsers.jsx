@@ -14,7 +14,7 @@ const ManageUsers = () => {
     const axiosSecure = useAxiosSecure();
     // pagination
     const [page, setPage] = useState(1);
-    const limit = 10; // Change as needed
+    const limit = 10;
 
     const { data, refetch, isLoading } = useQuery({
         queryKey: ['users', page],
@@ -23,7 +23,7 @@ const ManageUsers = () => {
             return data;
         }
     });
-    
+
     if (isLoading) {
         return (
             <div className="flex justify-center items-center h-screen">
@@ -31,12 +31,13 @@ const ManageUsers = () => {
             </div>
         );
     }
-    
-    
+
+
     const users = data?.users || [];
     const pageCount = data?.totalPages || 1;
-    
+
     const handlePageClick = ({ selected }) => {
+        // console.log("Page selected:", selected + 1);
         setPage(selected + 1);
     };
     // pagination
@@ -108,7 +109,7 @@ const ManageUsers = () => {
                         <Table.HeadCell className="max-w-[80px] text-center">Current Staus</Table.HeadCell>
                         <Table.HeadCell className="max-w-[80px] text-center">Set Admin</Table.HeadCell>
                         <Table.HeadCell className="max-w-[80px] text-center">Set Agent</Table.HeadCell>
-                        <Table.HeadCell className="max-w-[80px] text-center">Set Fraud</Table.HeadCell>
+                        <Table.HeadCell className="max-w-[80px] text-center">Set As</Table.HeadCell>
                         <Table.HeadCell className="max-w-[80px] text-center">Delete</Table.HeadCell>
                     </Table.Head>
                     <Table.Body className="divide-y">
@@ -122,7 +123,7 @@ const ManageUsers = () => {
                                         <p>{item.email}</p>
                                     </Table.Cell>
                                     <Table.Cell className="border-right max-w-[0px]">
-                                        <p className="w-fit mx-auto capitalize">{item.role}</p>
+                                        <p className="w-fit mx-auto capitalize">{item.role || 'user'}</p>
                                     </Table.Cell>
                                     <Table.Cell className="border-right text-center max-w-[0px]">
                                         {
@@ -135,9 +136,14 @@ const ManageUsers = () => {
                                         }
                                     </Table.Cell>
                                     <Table.Cell className="border-right max-w-[0px]">
-                                        {
-                                            item.role === 'agent' && <div className="mx-auto w-fit"><button className="role-button fraud" onClick={() => handleButtonClick('fraud', item._id, item.email)}>Fraud</button></div>
-                                        }
+                                        {(item.role === 'admin' || item.role === 'agent') && (
+                                            <div className="mx-auto w-fit flex gap-2">
+                                                {
+                                                    item.role === 'agent' && <button className="role-button fraud" onClick={() => handleButtonClick('fraud', item._id, item.email)}>Fraud</button>
+                                                }
+                                                <button className="role-button bg-black text-white" onClick={() => handleButtonClick('User', item._id, item.email)}>User</button>
+                                            </div>
+                                        )}
                                     </Table.Cell>
                                     <Table.Cell className="max-w-[0px]">
                                         <div className="mx-auto w-fit"><button onClick={() => handleDelete(item._id)}><img src={deleteIcon}></img></button></div>
@@ -148,6 +154,7 @@ const ManageUsers = () => {
                     </Table.Body>
                 </Table>
                 <ReactPaginate
+                    forcePage={page - 1} // Ensures UI syncs with state
                     breakLabel="..."
                     nextLabel="Next"
                     onPageChange={handlePageClick}
@@ -161,6 +168,7 @@ const ManageUsers = () => {
                     nextLinkClassName="px-4 py-2 border border-gray-300 rounded transition-all duration-300 hover:bg-red-600 hover:text-white"
                     activeClassName="py-[7px] bg-red-600 text-white rounded"
                 />
+
             </div>
         </div>
     );

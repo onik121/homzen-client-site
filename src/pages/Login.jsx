@@ -6,11 +6,14 @@ import useAuth from '../hooks/useAuth';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet';
 import { Scroll } from '../components/Scroll';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useState } from 'react';
 
 const Login = () => {
 
     const { loginUser } = useAuth();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const [show, setShow] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -47,9 +50,13 @@ const Login = () => {
                                         {errors.email && <span className='text-red-600'>Email is required</span>}
                                     </div>
                                     <div>
-                                        <label>Password</label>
-                                        <input type="password" name="password" {...register("password", { required: true })} />
-                                        {errors.password && <span className='text-red-600'>Password is required</span>}
+                                        <div >
+                                            <div className="flex items-center">
+                                                <input type={show ? 'test' : 'password'} name="password" {...register("password", { required: true })} />
+                                                <span onClick={() => setShow(!show)} className="cursor-pointer -ml-9 eye">{show ? <FaEye></FaEye> : <FaEyeSlash />}</span>
+                                            </div>
+                                            {errors.password && <span className='text-red-600'>Password is required</span>}
+                                        </div>
                                     </div>
                                     <button className='button w-full'>Sign In</button>
                                 </form>

@@ -424,13 +424,13 @@ textarea {
     border: 1px solid black;
 }
 
-input,
+/* input,
 select,
 textarea:focus {
     outline: none;
     border-color: black !important;
     box-shadow: none !important;
-}
+} */
 
 .react-datepicker-wrapper {
     display: flex !important;
@@ -460,4 +460,74 @@ td:first-child {
 
 td:nth-child(2) {
     max-width: 200px;
+}
+
+
+
+
+/* login page css */
+/* .signin-form input {
+    outline: none;
+    min-width: 280px;
+    height: 47px;
+    border: 1px solid black;
+    padding: 0px 10px;
+    border-radius: 5px;
+} */
+
+/* label {
+    font-weight: 400;
+    font-size: 17px;
+    margin-bottom: 10px;
+} */
+
+/* input:focus {
+    outline: none;
+    border-color: red!important;
+    box-shadow: none !important;
+} */
+
+input,select,textarea:focus {
+    outline: none;
+    border-color: black !important;
+    box-shadow: none !important;
+}
+
+/* .form-box input {
+    width: 100%;
+    height: 47px;
+    outline: none;
+    border-radius: 5px;
+    border-color: black !important;
+} */
+
+input {
+    border: 1px solid black;
+    padding: 0px 10px;
+    /* background-color: red !important; */
+}
+
+.eye {
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*  */
+
+
+.loader {
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid red;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

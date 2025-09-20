@@ -9,7 +9,7 @@ const AddedProperties = () => {
     const { user, loading } = useAuth();
     const axiosSecure = useAxiosSecure();
 
-    const { data: addedProperties = [], isPending, isError, refetch} = useQuery({
+    const { data: addedProperties = [], isLoading, isError, refetch} = useQuery({
         queryKey: [user?.email, 'userRole'],
         enabled: !loading,
         queryFn: async () => {
@@ -17,6 +17,14 @@ const AddedProperties = () => {
             return data;
         }
     });
+
+    if (isLoading) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <p className="text-2xl font-semibold">Loading...</p>
+            </div>
+        );
+    }
 
     const properties = Array.isArray(addedProperties) ? addedProperties : [];
 
@@ -27,14 +35,13 @@ const AddedProperties = () => {
                 <title>Added Properties</title>
             </Helmet>
             <h1 className='text-3xl font-medium text-black mb-6'>My Added Properties</h1>
-            {isPending && 'Loading...'}
-            {!isPending && !isError && (
+            
                 <div className='grid grid-cols-4 gap-6 min-w-[1200px]'>
                     {properties.map(item => (
                         <AddedPropertiesCard key={item._id} item={item} refetch={refetch}/>
                     ))}
                 </div>
-            )}
+            
         </div>
     );
 };

@@ -3,7 +3,7 @@ import { Scroll } from './../../components/Scroll';
 
 const AdminProfile = () => {
 
-    const [users] = useUser()
+    const [users] = useUser();
 
     return (
         <div className="overflow-x-auto border-2 p-8">

@@ -63,7 +63,7 @@ const Details = () => {
             propertyId: _id,
             created_at: new Date(),
         }
-        console.log(reviewData)
+        // console.log(reviewData)
         try {
             const response = await axiosSecure.post('/reviews', reviewData)
             if (response.data.insertedId) {

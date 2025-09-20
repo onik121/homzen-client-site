@@ -1,23 +1,31 @@
 import { Table } from 'flowbite-react';
-import useProperties from '../../hooks/useProperties';
 import locationIcon from '../../assets/icons/location.png'
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet';
 import { Scroll } from '../../components/Scroll';
+import { useState } from 'react';
+import ReactPaginate from 'react-paginate';
+import { Modal } from "flowbite-react";
+import { IoMdEye } from "react-icons/io";
+
 
 const ManageProperties = () => {
 
-
     const axiosSecure = useAxiosSecure();
-    const { data: properties = [], refetch, isLoading } = useQuery({
-        queryKey: ['properties'],
+    const [page, setPage] = useState(1)
+    const limit = 5;
+    const [selectedProperty, setSelectedProperty] = useState(null);
+    const [openModal, setOpenModal] = useState(false);
+    const { data, refetch, isLoading } = useQuery({
+        queryKey: ['properties', page],
         queryFn: async () => {
-            const { data } = await axiosSecure.get('/properties/all')
+            const { data } = await axiosSecure.get(`/properties/all?page=${page}&limit=${limit}`);
             return data;
         }
-    })
+    });
+
 
     if (isLoading) {
         return (
@@ -26,6 +34,14 @@ const ManageProperties = () => {
             </div>
         );
     }
+
+    const properties = data?.properties || [];
+    const pageCount = data?.totalPages || 1;
+
+    const handlePageClick = ({ selected }) => {
+        setPage(selected + 1);
+    };
+    // pagination
 
     const handleButtonClick = async (action, id) => {
         const titleText = action === 'verified' ? `Did you want to set this property as ${action}` : `Did you want to ${action} this property`;
@@ -76,6 +92,13 @@ const ManageProperties = () => {
     };
 
 
+    const handleViewDetails = (property) => {
+        setSelectedProperty(property);
+        setOpenModal(true);
+    };
+
+
+
     return (
         <div className="overflow-x-auto border-2 p-8">
             <Scroll></Scroll>
@@ -89,6 +112,7 @@ const ManageProperties = () => {
                         <Table.HeadCell>Property Details</Table.HeadCell>
                         <Table.HeadCell className="max-w-[80px] text-center">Agent</Table.HeadCell>
                         <Table.HeadCell className="max-w-[60px] text-center">Price</Table.HeadCell>
+                        <Table.HeadCell className="max-w-[60px] text-center">View</Table.HeadCell>
                         <Table.HeadCell className="max-w-[80px] text-center">Status</Table.HeadCell>
                         <Table.HeadCell className="max-w-[80px] text-center">Action</Table.HeadCell>
                     </Table.Head>
@@ -109,8 +133,8 @@ const ManageProperties = () => {
                                             </div>
                                         </div>
                                     </Table.Cell>
-                                    <Table.Cell className="border-right max-w-[110px]">
-                                        <div className="w-fit mx-auto gap-3 flex items-center">
+                                    <Table.Cell className="border-right max-w-[0px]">
+                                        <div className="max-w-fit mx-auto gap-3 flex items-center">
                                             <div>
                                                 <img className='rounded-full w-[40px]' src={item.agent_image}></img>
                                             </div>
@@ -121,6 +145,9 @@ const ManageProperties = () => {
                                         </div>
                                     </Table.Cell>
                                     <Table.Cell className="border-right text-center max-w-[0px]"><p>${item.price}</p></Table.Cell>
+                                    <Table.Cell className="border-right text-center max-w-[0px]">
+                                        <button onClick={() => handleViewDetails(item)}><IoMdEye className='text-xl' /></button>
+                                    </Table.Cell>
                                     <Table.Cell className="text-center max-w-[0px] border-right">
                                         <div className={`w-fit mx-auto capitalize rounded px-2 py-[2px] ${getStatusClass(item.verification_status)}`}>
                                             {item.verification_status}
@@ -131,6 +158,7 @@ const ManageProperties = () => {
                                             item.verification_status === 'pending' && <>
                                                 <div className="bg-green-600 w-fit text-white mx-auto capitalize rounded px-2 py-[2px]"><button onClick={() => handleButtonClick('verified', item._id)}>Verify</button></div>
                                                 <div className="bg-red-600 w-fit text-white mx-auto capitalize rounded px-2 py-[2px]"> <button onClick={() => handleButtonClick('reject', item._id)}>Reject</button></div>
+
                                             </>
                                         }
                                     </Table.Cell>
@@ -139,7 +167,41 @@ const ManageProperties = () => {
                         }
                     </Table.Body>
                 </Table>
+
             </div>
+            <div className='mt-7'>
+                <ReactPaginate
+                    forcePage={page - 1} // Ensures UI syncs with state
+                    breakLabel="..."
+                    nextLabel="Next"
+                    onPageChange={handlePageClick}
+                    pageRangeDisplayed={5}
+                    pageCount={pageCount}
+                    previousLabel="Previous"
+                    marginPagesDisplayed={2}
+                    containerClassName="flex justify-center items-center gap-2 mt-4"
+                    pageLinkClassName="px-4 py-2 border border-gray-300 rounded transition-all duration-300 hover:bg-red-600 hover:text-white"
+                    previousLinkClassName="px-4 py-2 border border-gray-300 rounded transition-all duration-300 hover:bg-red-600 hover:text-white"
+                    nextLinkClassName="px-4 py-2 border border-gray-300 rounded transition-all duration-300 hover:bg-red-600 hover:text-white"
+                    activeClassName="py-[7px] bg-red-600 text-white rounded"
+                />
+            </div>
+            <Modal show={openModal} size="md" popup onClose={() => setOpenModal(false)}>
+                <Modal.Header />
+                <Modal.Body>
+                    {selectedProperty && (
+                        <div className="space-y-4">
+                            <img className="w-full rounded-md" src={selectedProperty.property_image} alt="Property" />
+                            <h2 className="text-xl font-medium">{selectedProperty.property_title}</h2>
+                            <p><strong>Location:</strong> {selectedProperty.property_location}</p>
+                            <p><strong>Price:</strong> ${selectedProperty.price} {selectedProperty.property_status === 'rent' ? '/month' : '/SqFT'}</p>
+                            <p><strong>Status:</strong> {selectedProperty.verification_status}</p>
+                            <p><strong>Agent Name:</strong> {selectedProperty.agent_name}</p>
+                            <p><strong>Agent Email:</strong> {selectedProperty.agent_email}</p>
+                        </div>
+                    )}
+                </Modal.Body>
+            </Modal>
         </div>
     );
 };

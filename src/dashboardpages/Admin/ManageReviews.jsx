@@ -10,13 +10,21 @@ const ManageReviews = () => {
 
     const axiosSecure = useAxiosSecure();
 
-    const { data: reviews = [], refetch } = useQuery({
+    const { data: reviews = [], refetch, isLoading } = useQuery({
         queryKey: ['reviews'],
         queryFn: async () => {
             const { data } = await axiosSecure.get(`/reviews`);
             return data;
         }
     })
+
+    if (isLoading) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <p className="text-2xl font-semibold">Loading...</p>
+            </div>
+        );
+    }
 
     const handleDelete = (id) => {
         Swal.fire({
